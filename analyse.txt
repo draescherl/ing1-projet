@@ -40,4 +40,23 @@ valeurs que peuvent prendre les dropdowns :
 
 2) Possibilité de modifier le contenu de chaque dropdown
 
-3) On improvisera
+3) Générer des graphiques
+- https://www.npmjs.com/package/image-charts
+- possibilité de visualiser les résultats par département, ou dans la globalité
+- données visibles au mois/trimestre/année :
+   -> nbre communiqué de presse
+   -> nbre retombée presse par communiqué de presse
+   -> nbre retombée presse totale
+   -> nbre article positif/négatif
+   -> nbre retombée presse PQR/web/radio/tv/réseaux sociaux
+   -> nbre retombée presse par thème
+   -> impact communiqué de presse (combien de retombées sont liées à 1 communiqué en moyenne par département et au total)
+   -> communiqués qui ont le plus marché (le plus de retombées liée à ce communiqué)
+   -> communiqués qui ont le moins fonctionné
+
+Les bonus :
+- extraction des données
+- lier les différents input entre eux (ex: si le département 64 est choisi, ne pas proposer les médias du 65)
+- ergonomie du site
+- graphiques/schémas
+- initiatives personnelles
