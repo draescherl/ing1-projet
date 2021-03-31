@@ -3,21 +3,21 @@
     <navbar/>
 
     <v-main>
-      <HelloWorld/>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
     </v-main>
-    
+
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 import Navbar from './components/navbar.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
     Navbar,
   },
 
