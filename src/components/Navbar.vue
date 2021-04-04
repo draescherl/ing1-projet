@@ -8,17 +8,18 @@
 
     <v-navigation-drawer app v-model="drawer" absolute temporary>
       <v-list nav dense>
-        <v-list-item-group
-          v-model="group"
-          active-class="secondary"
-        >
+        <v-list-item-group v-model="group" active-class="secondary">
 
-          <NavbarItem 
-            v-for="item in links"
-            :icon="item.icon"
-            :text="item.text"
+          <v-list-item
+            v-for="item in items"
             :key="item.text"
-          />
+            router :to="item.route"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{ item.text }}</v-list-item-title>
+          </v-list-item>
 
         </v-list-item-group>
       </v-list>
@@ -27,36 +28,32 @@
 </template>
 
 <script>
-import NavbarItem from './NavbarItem';
-
 export default {
   name: "Navbar",
-  components: { 
-    NavbarItem 
-  },
+  components: { },
 
-  data: function() {
+  data: function () {
     return {
       drawer: false,
       group: null,
-      links: [
+      items: [
         {
           icon: "mdi-plus-box",
           text: "Saisir un article",
-          link: ""
+          route: "/saisie",
         },
         {
           icon: "mdi-chart-pie",
           text: "Voir les résultats",
-          link: ""
+          route: "/resultats",
         },
         {
           icon: "mdi-cog-outline",
           text: "Page d'administration",
-          link: ""
-        }
-      ]
-    }
-  }
+          route: "/administration",
+        },
+      ],
+    };
+  },
 };
 </script>
