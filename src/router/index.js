@@ -19,12 +19,12 @@ const routes = [
   },
   {
     path: '/resultats',
-    name: 'Resultats',
+    name: 'Results',
     component: Resultats
   },
   {
     path: '/saisie',
-    name: 'saisie',
+    name: 'Input',
     component: Saisie
   }
   

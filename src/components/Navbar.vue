@@ -1,9 +1,8 @@
 <template>
   <div>
     <v-app-bar color="primary" app>
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-app-bar-nav-icon @click="drawer = true" class="white--text"></v-app-bar-nav-icon>
+      <v-toolbar-title class="white--text">{{ title }}</v-toolbar-title>
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" absolute temporary>
@@ -36,6 +35,7 @@ export default {
     return {
       drawer: false,
       group: null,
+      title: "Médiascope Enedis",
       items: [
         {
           icon: "mdi-plus-box",
