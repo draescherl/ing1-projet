@@ -119,7 +119,6 @@ export default {
         "Avenir Aquitaine 40",
         "Avenir Aquitaine 64",
         "Entreprises engagées 64",
-        "Facebook",
         "Flash-Infos Nouvelle-Aquitaine Occitanie 64",
         "Flash-Infos Nouvelle-Aquitaine Occitanie 65",
         "France bleu Bearn",
@@ -153,7 +152,7 @@ export default {
         "Tarbes/Lourdes infos",
         "WebTV Oloron",
       ],
-      rs: [],
+      rs: ["Facebook"],
     },
     themes: [
       "Partenariat",
