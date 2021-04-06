@@ -54,8 +54,8 @@
         ></v-file-input>
       </v-col>
       <v-col cols="4" class="d-flex justify-center">
-        <v-text-field label="Lien"></v-text-field
-      ></v-col>
+        <v-text-field label="Lien"></v-text-field>
+      </v-col>
     </v-row>
 
     <v-row>
@@ -86,9 +86,9 @@ export default {
     get_relevant_sources() {
       /**
        * In this map we store the correspondance between
-       * the value of the select field and the sources 
+       * the value of the select field and the sources
        * object given in the props.
-       * 
+       *
        * Key: value of the select
        * Value: name in the sources object
        */
