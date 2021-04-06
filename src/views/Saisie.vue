@@ -1,72 +1,41 @@
 <template>
   <div class="saisie">
-    <v-form v-model="valid">
-      
-      <Date />
-      <v-text-field
-        v-model="firstname"
-        :rules="nameRules"
-        label="Référence"
-        required
-      ></v-text-field>
+    <v-tabs class="d-flex justify-center">
+      <v-tab @click="select(0)">Retombée presse</v-tab>
+      <v-tab @click="select(1)">Communiqué de presse</v-tab>
+    </v-tabs>
 
-      <v-text-field
-        v-model="firstname"
-        :rules="nameRules"
-        label="Titre"
-        required
-      ></v-text-field>
+    <v-form>
+      <div v-if="selected == 0">
+        <Retombee
+          :type="types"
+          :departement="departements"
+          :source="source"
+          :theme="themes"
+        />
+      </div>
 
-      <v-select :items="source.PQR" label="Type" outlined></v-select>
-      <v-select :items="source.PQR" label="Département" outlined></v-select>
-      <v-select :items="source.PQR" label="Source" outlined></v-select>
-      <v-select :items="source.PQR" label="Thème" outlined></v-select>
-      <v-radio-group v-model="row" row>
-        <v-radio label="Positive" value="positive" color="success"></v-radio>
-        <v-radio label="Négative" value="negative" color="error"></v-radio>
-      </v-radio-group>
-
-      <Date />
-      <v-text-field
-        v-model="firstname"
-        :rules="nameRules"
-        label="Code"
-        required
-      ></v-text-field>
-
-      <v-text-field
-        v-model="firstname"
-        :rules="nameRules"
-        label="Titre"
-        required
-      ></v-text-field>
-
-      <v-select :items="source.PQR" label="Type" outlined></v-select>
-      <v-select :items="source.PQR" label="Thème" outlined></v-select>
-
-      <v-col class="d-flex" cols="12" sm="6">
-        <v-select
-          :items="source.PQR"
-          label="Outlined style"
-          outlined
-        ></v-select>
-      </v-col>
-
+      <div v-if="selected == 1">
+        <Communique :type="types" :departement="departements" :theme="themes" />
+      </div>
     </v-form>
   </div>
 </template>
 
 <script>
-import Date from "../components/inputs/Date";
+import Retombee from "../components/inputs/Retombee";
+import Communique from "../components/inputs/Communique";
 
 export default {
   name: "Saisie",
 
   components: {
-    Date,
+    Retombee,
+    Communique,
   },
 
   data: () => ({
+    selected: 0,
     types: ["PQR", "Radio", "TV", "Web", "Réseaux Sociaux"],
     departements: [64, 65, 40],
     source: {
@@ -200,5 +169,11 @@ export default {
     ],
     row: null,
   }),
+
+  methods: {
+    select(tab) {
+      this.selected = tab;
+    },
+  },
 };
 </script>
