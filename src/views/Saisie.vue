@@ -10,7 +10,7 @@
         <Retombee
           :type="types"
           :departement="departements"
-          :source="source"
+          :sources="sources"
           :theme="themes"
         />
       </div>
@@ -37,9 +37,9 @@ export default {
   data: () => ({
     selected: 0,
     types: ["PQR", "Radio", "TV", "Web", "Réseaux Sociaux"],
-    departements: [64, 65, 40],
-    source: {
-      PQR: [
+    departements: [64, 65, 40].sort(),
+    sources: {
+      pqr: [
         "Bulletin Agricole des Hautes-Pyrénées",
         "La Dépêche",
         "La Gazette du Midi",
@@ -97,7 +97,7 @@ export default {
         "Virgin Radio 65",
         "XIBEROKO BOTXA",
       ],
-      TV: [
+      tv: [
         "France 2 40",
         "France 2 64",
         "France 2 65",
@@ -153,16 +153,15 @@ export default {
         "Tarbes/Lourdes infos",
         "WebTV Oloron",
       ],
-      RS: [],
+      rs: [],
     },
     themes: [
       "Partenariat",
       "Sécurité",
       "Transition Ecologique",
       "RH",
-      {
-        crise: ["Crise Climatique", "Crise RH"],
-      },
+      "Crise Climatique", // The company wants these as one, check subject again later
+      "Crise RH",
       "Coupure",
       "Linky",
       "RSE",
