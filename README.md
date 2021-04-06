@@ -18,7 +18,7 @@ npm run build
 ```
 
 ## Problèmes connus
-Il est possible que node-sass lève une erreur. Le cas échéant, exécuter la commande `npm rebuild node-sass` devrait suffire à corriger le problème.
+Il est possible que node-sass lève une erreur lors de la compilation. Le cas échéant, exécuter la commande `npm rebuild node-sass` devrait suffire à corriger le problème.
 
 ## Auteurs
 * **Yacine Akki** - akkiyacine@eisti.eu
