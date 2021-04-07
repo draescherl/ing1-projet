@@ -7,7 +7,7 @@ Dans ce document, chaque fois qu'une commande `cd` est utilisée, il est suppos�
 
 ## Installation des dépendances du projet
 ### Base de données
-Les scripts de création de base de donnée se situent dans le dossier `server/`
+Les scripts de création de base de donnée se situent dans le dossier `server/db/`
 ### Côté serveur
 ```
 cd server/
