@@ -40,7 +40,7 @@ export default {
     departements: [64, 65, 40].sort(),
     sources: {
       pqr: {
-        40: ["Les annonces Landaises", "La Gazette du Midi"],
+        40: ["Les annonces Landaises", "La Gazette du Midi"].sort(),
         64: [
           "La République des Pyrénées",
           "Le Journal de Saint Palais",
@@ -50,14 +50,14 @@ export default {
           "Mediabask",
           "Sud-Ouest Béarn",
           "Sud-Ouest Pays Basque",
-        ],
+        ].sort(),
         65: [
           "Bulletin Agricole des Hautes-Pyrénées",
           "La Dépêche",
           "La Nouvelle République des Pyrénées",
           "La semaine des Pyrénées",
           "L'Essor Bigourdan",
-        ],
+        ].sort(),
       },
       radio: {
         40: [
@@ -73,7 +73,7 @@ export default {
           "Radio 100% 40",
           "RFM 40",
           "Virgin Radio 40",
-        ],
+        ].sort(),
         64: [
           "Atomic Radio 64",
           "Chérie FM 64",
@@ -93,7 +93,7 @@ export default {
           "Radio 100% 64",
           "RFM 64",
           "Virgin Radio 64",
-        ],
+        ].sort(),
         65: [
           "Atomic Radio 65",
           "Chérie FM 65",
@@ -104,12 +104,12 @@ export default {
           "Radio 100% 65",
           "RFM 65",
           "Virgin Radio 65",
-        ],
+        ].sort(),
       },
       tv: {
-        40: ["France 2 40", "France 3 40", "TV PI 40", "web tv landes"],
-        64: ["France 2 64", "France 3 64", "TV PI 64"],
-        65: ["France 2 65", "France 3 65"],
+        40: ["France 2 40", "France 3 40", "TV PI 40", "web tv landes"].sort(),
+        64: ["France 2 64", "France 3 64", "TV PI 64"].sort(),
+        65: ["France 2 65", "France 3 65"].sort(),
       },
       web: {
         40: [
@@ -125,9 +125,9 @@ export default {
           "Radio presence",
           "Le courrier français des Landes",
           "PressLib 40",
-          "objectif aquitaine 40",
+          "Objectif Aquitaine 40",
           "Aquitainefr 40",
-        ],
+        ].sort(),
         64: [
           "Aquitainefr 64",
           "Atomic Radio 64",
@@ -146,7 +146,7 @@ export default {
           "HpYTV 64",
           "Flash-Infos Nouvelle-Aquitaine Occitanie 64",
           "objectif aquitaine 64",
-        ],
+        ].sort(),
         65: [
           "Aquitainefr 65",
           "Atomic Radio 65",
@@ -159,9 +159,9 @@ export default {
           "PressLib 65",
           "HpYTV 65",
           "Flash-Infos Nouvelle-Aquitaine Occitanie 65",
-        ],
+        ].sort(),
       },
-      rs: ["Facebook"],
+      rs: ["Facebook"].sort(),
     },
     themes: [
       "Partenariat",
