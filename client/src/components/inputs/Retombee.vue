@@ -114,7 +114,8 @@ export default {
       const s_type = correspondance_table[this.selected_type];
       const s_dep = this.selected_department;
 
-      if (typeof s_type === "undefined" || s_dep === 0 && s_type != "rs") return [];
+      if (typeof s_type === "undefined" || (s_dep === 0 && s_type != "rs"))
+        return [];
 
       if (s_dep in this.sources[s_type]) return this.sources[s_type][s_dep];
       else return this.sources[s_type];
