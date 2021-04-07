@@ -84,6 +84,7 @@ export default {
   props: ["type", "departement", "sources", "theme"],
 
   data: () => ({
+    row: null,
     selected_type: null, // Here we store the value of the type input
     selected_department: 0, // Here we store the value of the department input
   }),
