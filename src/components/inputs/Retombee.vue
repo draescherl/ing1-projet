@@ -22,7 +22,12 @@
         ></v-select>
       </v-col>
       <v-col cols="6">
-        <v-select :items="departement" label="Département" outlined></v-select>
+        <v-select
+          :items="departement"
+          label="Département"
+          v-model="selected_department"
+          outlined
+        ></v-select>
       </v-col>
     </v-row>
     <v-row>
@@ -79,7 +84,8 @@ export default {
   props: ["type", "departement", "sources", "theme"],
 
   data: () => ({
-    selected_type: null, // Here we store the value of the type select
+    selected_type: null, // Here we store the value of the type input
+    selected_department: 0, // Here we store the value of the department input
   }),
 
   methods: {
@@ -104,7 +110,13 @@ export default {
        * correspondance_table[this.selected_type] translates
        * what the user see on screen to usable data.
        */
-      return this.sources[correspondance_table[this.selected_type]];
+      const s_type = correspondance_table[this.selected_type];
+      const s_dep = this.selected_department;
+
+      if (typeof s_type === "undefined" || s_dep === 0 && s_type != "rs") return [];
+
+      if (s_dep in this.sources[s_type]) return this.sources[s_type][s_dep];
+      else return this.sources[s_type];
     },
   },
 };
