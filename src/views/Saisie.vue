@@ -174,7 +174,6 @@ export default {
       "Linky",
       "RSE",
     ],
-    row: null,
   }),
 
   methods: {
