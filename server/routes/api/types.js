@@ -3,6 +3,9 @@ const db = require('../../connection');
 
 const router = express.Router();
 
+// temp :
+const types = ["PQR", "Radio", "TV", "Web", "Réseaux Sociaux"];
+
 db.query('SELECT * FROM `types`', (err, res) => {
   if (err)
     console.log(err);
@@ -12,7 +15,7 @@ db.query('SELECT * FROM `types`', (err, res) => {
 
 // Get
 router.get('/', (req, res) => {
-  res.send('types works!');
+  res.send(types);
 });
 
 // Add
