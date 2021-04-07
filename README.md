@@ -33,7 +33,7 @@ npm run serve
 
 ## Mise en production
 ### Base de données
-Les scripts de création de base de donnée se situent dans le dossier `server/`
+Les scripts de création de base de donnée se situent dans le dossier `server/db/`
 ### Compiler le côté client
 ```
 cd client/
