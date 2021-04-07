@@ -7,7 +7,19 @@ Dans ce document, chaque fois qu'une commande `cd` est utilisée, il est suppos�
 
 ## Installation des dépendances du projet
 ### Base de données
-Les scripts de création de base de donnée se situent dans le dossier `server/db/`
+Les scripts de création de base de donnée se situent dans le dossier `server/db/`. <br>
+Afin de se connecter à la base, il est nécessaire de créer un fichier contenant les identifiants :
+```
+cd server/
+touch creds.json
+```
+Dans le fichier `creds.json`, coller le contenu suivant en renseignant vos identifiants :
+```json
+{
+  "username": "",
+  "password": ""
+}
+```
 ### Côté serveur
 ```
 cd server/
@@ -33,7 +45,7 @@ npm run serve
 
 ## Mise en production
 ### Base de données
-Les scripts de création de base de donnée se situent dans le dossier `server/db/`
+Voir instructions dans `Installation des dépendances du projet -> Base de données`.
 ### Compiler le côté client
 ```
 cd client/
