@@ -126,8 +126,7 @@ const sources = {
       "HpYTV 65",
       "Flash-Infos Nouvelle-Aquitaine Occitanie 65",
     ].sort()
-  },
-  rs: ["Facebook"].sort(),
+  }
 };
 
 
