@@ -14,14 +14,14 @@ class DBRequests {
     }
   }
 
-  static insertTheme(item, text) {
+  static post(item, text) {
     const url = base_url + item.toString() + '/';
     return axios.post(url, {
       text: text
     });
   }
 
-  static deleteTheme(item, id) {
+  static delete(item, id) {
     const url = base_url + item.toString() + '/';
     return axios.delete(`${url}${id}`);
   }
