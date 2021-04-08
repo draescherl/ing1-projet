@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/sources';
+const url = 'api/sources';
 
 class SourceService {
 

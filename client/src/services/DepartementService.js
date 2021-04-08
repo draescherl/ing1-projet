@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/departements';
+const url = 'api/departements';
 
 class DepartementService {
 
@@ -27,7 +27,7 @@ class DepartementService {
   static delete(id) {
     return axios.delete(`${url}${id}`);
   }
-  
+
 }
 
 export default DepartementService;
