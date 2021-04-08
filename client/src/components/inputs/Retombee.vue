@@ -33,7 +33,7 @@
     <v-row>
       <v-col cols="6">
         <v-select
-          :items="get_relevant_sources()"
+          :items="sources"
           label="Source"
           outlined
         ></v-select>
@@ -85,41 +85,8 @@ export default {
 
   data: () => ({
     row: null,
-    selected_type: null, // Here we store the value of the type input
-    selected_department: 0, // Here we store the value of the department input
+    selected_type: null,
+    selected_department: 0,
   }),
-
-  methods: {
-    get_relevant_sources() {
-      /**
-       * In this map we store the correspondance between
-       * the value of the select field and the sources
-       * object given in the props.
-       *
-       * Key: value of the select
-       * Value: name in the sources object
-       */
-      const correspondance_table = {
-        PQR: "pqr",
-        Radio: "radio",
-        TV: "tv",
-        Web: "web",
-        "Réseaux Sociaux": "rs",
-      };
-
-      /**
-       * correspondance_table[this.selected_type] translates
-       * what the user see on screen to usable data.
-       */
-      const s_type = correspondance_table[this.selected_type];
-      const s_dep = this.selected_department;
-
-      if (typeof s_type === "undefined" || (s_dep === 0 && s_type != "rs"))
-        return [];
-
-      if (s_dep in this.sources[s_type]) return this.sources[s_type][s_dep];
-      else return this.sources[s_type];
-    },
-  },
 };
 </script>

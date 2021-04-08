@@ -25,8 +25,8 @@
 <script>
 import Retombee from "../components/inputs/Retombee";
 import Communique from "../components/inputs/Communique";
-import DBRequests from "../DBRequests";
 import DepartementService from "../services/DepartementService";
+import SourceService from "../services/SourceService";
 import ThemeService from "../services/ThemeService";
 import TypeService from "../services/TypeService";
 
@@ -54,7 +54,7 @@ export default {
 
   async created() {
     this.departements = await DepartementService.getAll();
-    this.sources = await DBRequests.get("sources");
+    this.sources = await SourceService.getAll(1, 1);
     this.themes = await ThemeService.getAll();
     this.types = await TypeService.getAll();
   },
