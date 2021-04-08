@@ -51,7 +51,7 @@ Voir instructions dans `Installation des dépendances du projet -> Base de donn�
 cd client/
 npm run build
 ```
-La version compilée du site se trouve dans le dossier `client/dist/`
+La version compilée du site se trouve dans le dossier `server/public/`
 ### Lancer le serveur
 ```
 cd server/
