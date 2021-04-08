@@ -40,7 +40,7 @@ npm run dev
 ### Côté client
 ```
 cd client/
-npm run serve
+npm run dev
 ```
 
 ## Mise en production
