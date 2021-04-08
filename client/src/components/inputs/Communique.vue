@@ -5,10 +5,10 @@
         <Date />
       </v-col>
       <v-col cols="4">
-        <v-text-field label="Code" required></v-text-field>
+        <v-text-field label="Titre" required></v-text-field>
       </v-col>
       <v-col cols="4">
-        <v-text-field label="Titre" required></v-text-field>
+        <v-text-field label="Code CP" required></v-text-field>
       </v-col>
     </v-row>
 

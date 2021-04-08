@@ -27,6 +27,8 @@ import Retombee from "../components/inputs/Retombee";
 import Communique from "../components/inputs/Communique";
 import DBRequests from "../DBRequests";
 import DepartementService from "../services/DepartementService";
+import ThemeService from "../services/ThemeService";
+import TypeService from "../services/TypeService";
 
 export default {
   name: "Saisie",
@@ -51,10 +53,10 @@ export default {
   },
 
   async created() {
-    this.themes = await DBRequests.get("themes");
-    this.sources = await DBRequests.get("sources");
     this.departements = await DepartementService.getAll();
-    this.types = await DBRequests.get("types");
+    this.sources = await DBRequests.get("sources");
+    this.themes = await ThemeService.getAll();
+    this.types = await TypeService.getAll();
   },
 };
 </script>

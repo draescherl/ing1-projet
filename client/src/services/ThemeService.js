@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/departements';
+const url = 'http://localhost:5000/api/themes';
 
-class DepartementService {
+class ThemeService {
 
   static getAll() {
     return new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ class DepartementService {
         const data = res.data;
 
         // Here we loop through the response object and extract the data 
-        Object.keys(data).forEach(index => to_return.push(data[index].num));
+        Object.keys(data).forEach(index => to_return.push(data[index].name));
 
         resolve(to_return);
       }).catch(err => reject(err));
@@ -27,7 +27,7 @@ class DepartementService {
   static delete(id) {
     return axios.delete(`${url}${id}`);
   }
-  
+
 }
 
-export default DepartementService;
+export default ThemeService;

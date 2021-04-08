@@ -13,21 +13,31 @@ CREATE USER '[redacted]'@'localhost' IDENTIFIED BY 'mdp';
 GRANT ALL PRIVILEGES ON mediascope.* to '[redacted]'@'localhost';
 
 CREATE TABLE departements(
-  id INT AUTO_INCREMENT,
-  num INT NOT NULL,
+  id TINYINT AUTO_INCREMENT,
+  num TINYINT NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE themes(
-  id INT AUTO_INCREMENT,
+  id TINYINT AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE types(
-  id INT AUTO_INCREMENT,
+  id TINYINT AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
--- CREATE TABLE sources();
+CREATE TABLE sources(
+  id SMALLINT AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  type TINYINT NOT NULL,
+  departement TINYINT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (type) REFERENCES types(id),
+  FOREIGN KEY (departement) REFERENCES departements(id) 
+);
+
+source server/db/mediascope_data.sql;
