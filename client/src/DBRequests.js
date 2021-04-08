@@ -7,8 +7,9 @@ class DBRequests {
   static async get(item) {
     const url = base_url + item.toString() + '/';
     const res = await axios.get(url);
+    const data = res.data;
     try {
-      return res.data;
+      return data;
     } catch (err) {
       return err;
     }
