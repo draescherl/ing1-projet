@@ -6,13 +6,16 @@ const router = express.Router();
 // temp :
 const departements = [64, 65, 40].sort();
 
-
-// Get
 router.get('/', (req, res) => {
-  res.send(departements);
+  db.query('SELECT * FROM `departements`', (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(result);
+      res.send(result);
+    }
+  });
 });
-
-// Add
 
 
 module.exports = router;
