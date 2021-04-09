@@ -19,6 +19,7 @@
           label="Type"
           v-model="selected_type"
           outlined
+          @change="update()"
         ></v-select>
       </v-col>
       <v-col cols="6">
@@ -27,6 +28,7 @@
           label="Département"
           v-model="selected_department"
           outlined
+          @change="update()"
         ></v-select>
       </v-col>
     </v-row>
@@ -88,5 +90,14 @@ export default {
     selected_type: null,
     selected_department: 0,
   }),
+
+  methods: {
+    update() {
+      this.$emit('change', [
+        this.selected_type,
+        this.selected_department
+      ]);
+    }
+  }
 };
 </script>
