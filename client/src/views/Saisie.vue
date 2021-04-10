@@ -10,7 +10,7 @@
         <Retombee
           :type="types_name"
           :departement="departements_num"
-          :sources="sources"
+          :sources="sources_name"
           :theme="themes_name"
           @change="updateSources"
         />
@@ -55,7 +55,8 @@ export default {
     themes_name: [],
     themes_id: [],
 
-    sources: [],
+    sources_name: [],
+    sources_id: [],
   }),
 
   methods: {
@@ -63,15 +64,23 @@ export default {
       this.selected = tab;
     },
     async updateSources(value) {
-      const allDefined = value.every((e) => e != undefined);
+      let allDefined = value.every((e) => e != undefined);
+      
       if (allDefined) {
-        const type_index = this.types_name.indexOf(value[0]);
-        const dep_index = this.departements_num.indexOf(value[1]);
+        let type_index = this.types_name.indexOf(value[0]);
+        let dep_index = this.departements_num.indexOf(value[1]);
 
-        const type_id = this.departements_id[type_index];
-        const dep_id = this.departements_id[dep_index];
+        let type_id = this.departements_id[type_index];
+        let dep_id = this.departements_id[dep_index];
 
-        this.sources = await SourceService.getAll(type_id, dep_id);
+        let sources = await SourceService.getAll(type_id, dep_id);
+        this.sources_name = [];
+        this.sources_id = [];
+        
+        sources.forEach((e) => {
+          this.sources_name.push(e.name);
+          this.sources_id.push(e.id);
+        });
       }
     },
   },
