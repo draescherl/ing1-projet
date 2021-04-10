@@ -43,7 +43,7 @@ CREATE TABLE sources(
   departement TINYINT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (type) REFERENCES types(id),
-  FOREIGN KEY (departement) REFERENCES departements(id) 
+  FOREIGN KEY (departement) REFERENCES departements(id)
 );
 
 CREATE TABLE retombees(
@@ -56,8 +56,8 @@ CREATE TABLE retombees(
   source SMALLINT NOT NULL,
   theme TINYINT NOT NULL,
   conotation TINYINT NOT NULL,
-  pdf_path VARCHAR(255),
-  hyperlink TEXT,
+  pdf_path VARCHAR(255) DEFAULT NULL,
+  hyperlink TEXT DEFAULT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (type) REFERENCES types(id),
   FOREIGN KEY (departement) REFERENCES departements(id),

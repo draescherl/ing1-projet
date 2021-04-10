@@ -5,25 +5,23 @@
       <v-tab @click="select(1)">Communiqué de presse</v-tab>
     </v-tabs>
 
-    <v-form>
-      <div v-if="selected == 0">
-        <Retombee
-          :type="types_name"
-          :departement="departements_num"
-          :sources="sources_name"
-          :theme="themes_name"
-          @change="updateSources"
-        />
-      </div>
+    <div v-if="selected == 0">
+      <Retombee
+        :type="types_name"
+        :departement="departements_num"
+        :sources="sources_name"
+        :theme="themes_name"
+        @change="updateSources"
+      />
+    </div>
 
-      <div v-if="selected == 1">
-        <Communique
-          :type="types_name"
-          :departement="departements_num"
-          :theme="themes_name"
-        />
-      </div>
-    </v-form>
+    <div v-if="selected == 1">
+      <Communique
+        :type="types_name"
+        :departement="departements_num"
+        :theme="themes_name"
+      />
+    </div>
   </div>
 </template>
 
@@ -65,7 +63,7 @@ export default {
     },
     async updateSources(value) {
       let allDefined = value.every((e) => e != undefined);
-      
+
       if (allDefined) {
         let type_index = this.types_name.indexOf(value[0]);
         let dep_index = this.departements_num.indexOf(value[1]);
@@ -76,7 +74,7 @@ export default {
         let sources = await SourceService.getAll(type_id, dep_id);
         this.sources_name = [];
         this.sources_id = [];
-        
+
         sources.forEach((e) => {
           this.sources_name.push(e.name);
           this.sources_id.push(e.id);
