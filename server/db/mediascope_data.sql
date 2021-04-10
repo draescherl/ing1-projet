@@ -4,6 +4,10 @@
 -- /!\ Only run this script once or you might encounter some 
 -- duplicate values. /!\
 
+INSERT INTO conotations (name) VALUES
+  ("Positive"),
+  ("Négative");
+
 INSERT INTO departements (num) VALUES
   (40),
   (64),
