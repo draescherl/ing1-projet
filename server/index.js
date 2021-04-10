@@ -4,19 +4,25 @@ const cors = require('cors');
 
 const app = express();
 
+
 // Middleware :
 app.use(bodyParser.json());
 app.use(cors());
+
 
 // Routes :
 const types = require('./routes/api/types');
 const departements = require('./routes/api/departements');
 const sources = require('./routes/api/sources');
 const themes = require('./routes/api/themes');
+const retombees = require('./routes/api/retombees');
+
 app.use('/api/types', types);
 app.use('/api/departements', departements);
 app.use('/api/sources', sources);
 app.use('/api/themes', themes);
+app.use('/api/retombees', retombees);
+
 
 // Handle production :
 if (process.env.NODE_ENV == 'production') {
@@ -29,6 +35,7 @@ if (process.env.NODE_ENV == 'production') {
   });
 }
 
+// Start app :
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
