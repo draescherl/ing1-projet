@@ -5,7 +5,6 @@ const router = express.Router();
 
 // Create
 router.post('/', (req, res) => {
-  console.log(req.body);
   let query = 'INSERT INTO retombees (publi_date, title, cp_code, type, departement, source, theme, conotation, pdf_path, hyperlink) VALUES (?, ?, ?, (SELECT id FROM types WHERE name = ?), (SELECT id FROM departements WHERE num = ?), (SELECT id FROM sources WHERE name = ? AND type = (SELECT id FROM types WHERE name = ?)), (SELECT id FROM themes WHERE name = ?), (SELECT id FROM conotations WHERE name = ?), ?, ?)';
   db.query(
     query,
