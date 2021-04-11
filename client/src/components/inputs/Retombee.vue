@@ -77,7 +77,8 @@
             truncate-length="40"
             label="Document format pdf"
             accept=".PDF, .pdf"
-            v-model="selected_document"
+            ref="file"
+            @change="handleFileUpload"
           ></v-file-input>
         </v-col>
         <v-col cols="4" class="d-flex justify-center">
@@ -109,6 +110,7 @@ export default {
 
   data: () => ({
     row: null,
+    file: '',
     selected_date: null,
     selected_title: null,
     selected_code: null,
@@ -130,7 +132,22 @@ export default {
       this.selected_date = value;
     },
 
+    handleFileUpload(event) {
+      this.file = event;
+      this.selected_document = event.name;
+      console.log('event:');
+      console.log(event);
+    },
+
     validate() {
+      let formData = new FormData();
+      console.log('this.file:');
+      console.log(this.file);
+      formData.append('file', this.file);
+      console.log('formData:');
+      console.log(formData);
+      RetombeeService.postFile(formData);
+
       let data = {
         publi_date: this.selected_date,
         title: this.selected_title,

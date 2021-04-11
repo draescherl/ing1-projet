@@ -4,6 +4,13 @@ const url = 'api/retombees';
 
 class RetombeeService {
 
+  static postFile(formData) {
+    return axios.post('api/files', {
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: formData
+    });
+  }
+
   static post(data) {
     return axios.post(url, {
       publi_date: data.publi_date,
