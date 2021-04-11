@@ -11,20 +11,21 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-text-field
-          v-model="dateFormatted"
-          label="Date"
           prepend-icon="mdi-calendar"
+          label="Date"
+          v-model="dateFormatted"
           v-bind="attrs"
-          @blur="date = parseDate(dateFormatted)"
           v-on="on"
+          @blur="date = parseDate(dateFormatted)"
           required
         ></v-text-field>
       </template>
       <v-date-picker
-        v-model="date"
-        no-title
-        @input="menu = false"
         color="secondary"
+        no-title
+        v-model="date"
+        @input="menu = false"
+        @change="update"
       ></v-date-picker>
     </v-menu>
   </div>
@@ -53,12 +54,26 @@ export default {
       const [year, month, day] = date.split("-");
       return `${day}/${month}/${year}`;
     },
+
     parseDate(date) {
       if (!date) return null;
 
       const [day, month, year] = date.split("/");
       return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     },
+
+    update() {
+      this.$emit("change", this.date);
+    },
   },
+
+  created() {
+    /**
+     * The update() method is only called when the date component is updated.
+     * Here we call it when the component is created to avoid frustration from
+     * the user.
+     */
+    this.update();
+  }
 };
 </script>

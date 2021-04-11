@@ -3,13 +3,21 @@
     <v-form>
       <v-row>
         <v-col cols="4">
-          <Date v-model="selected_date" />
+          <Date v-model="selected_date" @change="updateDate" />
         </v-col>
         <v-col cols="4">
-          <v-text-field label="Titre" v-model="selected_title" required></v-text-field>
+          <v-text-field
+            label="Titre"
+            v-model="selected_title"
+            required
+          ></v-text-field>
         </v-col>
         <v-col cols="4">
-          <v-text-field label="Code CP associé" v-model="selected_code" required></v-text-field>
+          <v-text-field
+            label="Code CP associé"
+            v-model="selected_code"
+            required
+          ></v-text-field>
         </v-col>
       </v-row>
 
@@ -35,10 +43,20 @@
       </v-row>
       <v-row>
         <v-col cols="6">
-          <v-select :items="sources" label="Source" v-model="selected_source" outlined></v-select>
+          <v-select
+            :items="sources"
+            label="Source"
+            v-model="selected_source"
+            outlined
+          ></v-select>
         </v-col>
         <v-col cols="6">
-          <v-select :items="theme" label="Thème" v-model="selected_theme" outlined></v-select>
+          <v-select
+            :items="theme"
+            label="Thème"
+            v-model="selected_theme"
+            outlined
+          ></v-select>
         </v-col>
       </v-row>
 
@@ -78,7 +96,7 @@
 
 <script>
 import Date from "./Date";
-import RetombeeService from "../../services/RetombeeService"
+import RetombeeService from "../../services/RetombeeService";
 
 export default {
   name: "Retombee",
@@ -108,10 +126,13 @@ export default {
       this.$emit("change", [this.selected_type, this.selected_department]);
     },
 
+    updateDate(value) {
+      this.selected_date = value;
+    },
+
     validate() {
       let data = {
-        // publi_date: this.selected_date,
-        publi_date: "2021-01-01",
+        publi_date: this.selected_date,
         title: this.selected_title,
         cp_code: this.selected_code,
         type: this.selected_type,
@@ -120,10 +141,10 @@ export default {
         theme: this.selected_theme,
         conotation: this.selected_conotation,
         pdf_path: this.selected_document,
-        hyperlink: this.selected_link
+        hyperlink: this.selected_link,
       };
       RetombeeService.post(data);
-    }
+    },
   },
 };
 </script>

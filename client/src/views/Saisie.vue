@@ -61,6 +61,7 @@ export default {
     select(tab) {
       this.selected = tab;
     },
+
     async updateSources(value) {
       let allDefined = value.every((e) => e != undefined);
 
