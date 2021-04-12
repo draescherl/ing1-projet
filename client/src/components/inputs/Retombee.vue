@@ -135,17 +135,11 @@ export default {
     handleFileUpload(event) {
       this.file = event;
       this.selected_document = event.name;
-      console.log('event:');
-      console.log(event);
     },
 
     validate() {
       let formData = new FormData();
-      console.log('this.file:');
-      console.log(this.file);
       formData.append('file', this.file);
-      console.log('formData:');
-      console.log(formData);
       RetombeeService.postFile(formData);
 
       let data = {
