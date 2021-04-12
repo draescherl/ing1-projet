@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
     (error, result) => {
       if (error) {
         console.log(error);
+        res.status(400).send(error.code);
       } else {
         res.status(201).send();
       }
@@ -35,8 +36,9 @@ router.get('/', (req, res) => {
   db.query('SELECT * FROM retombees', (error, result) => {
     if (error) {
       console.log(error);
+      res.status(400).send(error.code);
     } else {
-      res.send(result);
+      res.status(200).send(result);
     }
   });
 });
@@ -46,6 +48,7 @@ router.put('/:id', (req, res) => {
   db.query('UPDATE retombees SET ? WHERE id = ?', [req.body, req.params.id], (error, result) => {
     if (error) {
       console.log(error);
+      res.status(400).send(error.code);
     } else {
       res.status(200).send();
     }
@@ -57,6 +60,7 @@ router.delete('/:id', (req, res) => {
   db.query('DELETE FROM retombees WHERE id = ?', [req.params.id], (error, result) => {
     if (error) {
       console.log(error);
+      res.status(400).send(error.code);
     } else {
       res.status(200).send();
     }
