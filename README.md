@@ -13,11 +13,13 @@ Afin de se connecter à la base, il est nécessaire de créer un fichier contena
 cd server/
 touch creds.json
 ```
-Dans le fichier `creds.json`, coller le contenu suivant en renseignant vos identifiants :
+Dans le fichier `creds.json`, coller le contenu suivant en renseignant vos informations :
 ```json
 {
+  "host": "",
   "username": "",
-  "password": ""
+  "password": "",
+  "db": ""
 }
 ```
 ### Côté serveur

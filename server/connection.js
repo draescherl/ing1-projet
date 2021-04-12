@@ -7,10 +7,10 @@ const creds = require('./creds.json');
  * ALTER USER <username>@<host> IDENTIFIED WITH mysql_native_password BY <password>
  */
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: creds.host,
   user: creds.username,
   password: creds.password,
-  database: 'mediascope'
+  database: creds.db
 });
 
 connection.connect(function (err) {
