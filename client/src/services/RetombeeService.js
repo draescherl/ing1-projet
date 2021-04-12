@@ -5,9 +5,8 @@ const url = 'api/retombees';
 class RetombeeService {
 
   static postFile(formData) {
-    return axios.post('api/files', {
+    return axios.post('api/files', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
-      body: formData
     });
   }
 

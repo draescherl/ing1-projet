@@ -5,9 +5,8 @@ const router = express.Router();
 
 // Create
 router.post('/', (req, res) => {
-  console.log(req);
-  // let test = req.files.test;
-  // test.mv('./uploads/' + test.name);
+  let file = req.files.file;
+  file.mv('./uploads/' + file.name);
 });
 
 module.exports = router;
