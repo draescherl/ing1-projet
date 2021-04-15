@@ -110,7 +110,7 @@ export default {
 
   data: () => ({
     row: null,
-    file: '',
+    file: "",
     selected_date: null,
     selected_title: null,
     selected_code: null,
@@ -139,8 +139,8 @@ export default {
 
     validate() {
       let formData = new FormData();
-      formData.append('pdf', this.file);
-      formData.append('source', 'retombee');  // Name of the subfolder where the file will be uploaded
+      formData.append("pdf", this.file);
+      formData.append("source", "retombee"); // Name of the subfolder where the file will be uploaded
       RetombeeService.postFile(formData);
 
       let data = {
