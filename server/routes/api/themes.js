@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
       console.log(error);
       res.status(400).send(error.code);
     } else {
-      res.status(400).send(result);
+      res.status(200).send(result);
     }
   });
 });
