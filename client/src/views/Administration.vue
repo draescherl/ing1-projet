@@ -1,20 +1,20 @@
 <template>
   <div class="administration">
     <v-tabs class="d-flex justify-center">
-      <v-tab @click="select(0)">Retombées presse</v-tab>
-      <v-tab @click="select(1)">Communiqués de presse</v-tab>
-      <v-tab @click="select(2)">Types</v-tab>
-      <v-tab @click="select(3)">Départements</v-tab>
-      <v-tab @click="select(4)">Sources</v-tab>
-      <v-tab @click="select(5)">Thèmes</v-tab>
+      <v-tab
+        v-for="(item, index) in tab_items"
+        :key="item"
+        @click="select_tab(index)"
+        >{{ item }}</v-tab
+      >
     </v-tabs>
 
-    <div v-if="selected == 0"></div>
-    <div v-if="selected == 1"></div>
-    <div v-if="selected == 2"></div>
-    <div v-if="selected == 3"></div>
-    <div v-if="selected == 4"></div>
-    <div v-if="selected == 5"></div>
+    <div v-if="selected_tab(0)"></div>
+    <div v-if="selected_tab(1)"></div>
+    <div v-if="selected_tab(2)"></div>
+    <div v-if="selected_tab(3)"></div>
+    <div v-if="selected_tab(4)"></div>
+    <div v-if="selected_tab(5)"></div>
   </div>
 </template>
 
@@ -24,13 +24,26 @@ export default {
   components: {},
 
   data: () => ({
+    tab_items: [
+      "Retombées presse",
+      "Communiqués de presse",
+      "Types",
+      "Départements",
+      "Sources",
+      "Thèmes",
+    ],
+
     selected: 0,
   }),
 
   methods: {
-    select(tab) {
+    select_tab(tab) {
       this.selected = tab;
-    }
-  }
+    },
+
+    selected_tab(tab) {
+      return this.selected == tab;
+    },
+  },
 };
 </script>
