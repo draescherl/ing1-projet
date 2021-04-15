@@ -7,6 +7,7 @@ class RetombeeService {
   static postFile(formData) {
     return axios.post('api/files', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
+      body: { 'source': 'retombee' }
     });
   }
 

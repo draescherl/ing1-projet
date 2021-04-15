@@ -139,7 +139,8 @@ export default {
 
     validate() {
       let formData = new FormData();
-      formData.append('file', this.file);
+      formData.append('pdf', this.file);
+      formData.append('source', 'retombee');  // Name of the subfolder where the file will be uploaded
       RetombeeService.postFile(formData);
 
       let data = {
