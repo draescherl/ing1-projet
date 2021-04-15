@@ -20,6 +20,7 @@ const departements = require('./routes/api/departements');
 const sources = require('./routes/api/sources');
 const themes = require('./routes/api/themes');
 const retombees = require('./routes/api/retombees');
+const communiques = require('./routes/api/communiques');
 const files = require('./routes/api/files');
 
 app.use('/api/types', types);
@@ -27,6 +28,7 @@ app.use('/api/departements', departements);
 app.use('/api/sources', sources);
 app.use('/api/themes', themes);
 app.use('/api/retombees', retombees);
+app.use('/api/communiques', communiques);
 app.use('/api/files', files);
 
 

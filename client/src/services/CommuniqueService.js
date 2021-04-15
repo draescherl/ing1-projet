@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const url = 'api/retombees';
+const url = 'api/communiques';
 
-class RetombeeService {
+class CommuniqueService {
 
   static postFile(formData) {
     return axios.post('api/files', formData, {
@@ -17,9 +17,7 @@ class RetombeeService {
       cp_code: data.cp_code,
       type: data.type,
       departement: data.departement,
-      source: data.source,
       theme: data.theme,
-      conotation: data.conotation,
       pdf_path: data.pdf_path,
       hyperlink: data.hyperlink
     });
@@ -27,4 +25,4 @@ class RetombeeService {
 
 }
 
-export default RetombeeService;
+export default CommuniqueService;
