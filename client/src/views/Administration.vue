@@ -5,8 +5,9 @@
         v-for="(item, index) in tab_items"
         :key="item"
         @click="select_tab(index)"
-        >{{ item }}</v-tab
       >
+        {{ item }}
+      </v-tab>
     </v-tabs>
 
     <div v-if="selected_tab(0)"></div>
