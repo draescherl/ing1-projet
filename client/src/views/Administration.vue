@@ -18,13 +18,13 @@
           <v-col cols="4" class="offset-md-3">
             <v-select
               :items="type"
-              label="Département"
+              label="Type"
               outlined
             ></v-select>
           </v-col>
 
           <v-col cols="1">
-            <v-dialog v-model="dialog" width="300">
+            <v-dialog v-model="dialog1" width="300">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   class="mx-2"
@@ -39,20 +39,18 @@
               </template>
               <v-card>
                 <v-card-title class="headline">
-                  Modifier département
+                  Modifier type
                 </v-card-title>
 
                 <v-card-text>
                   <v-text-field
-                    label="Nouveau département"
+                    label="Nouveau nom"
                   ></v-text-field>
                 </v-card-text>
 
-                <v-divider></v-divider>
-
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" text @click="dialog = false">
+                  <v-btn color="primary" text @click="dialog1 = false">
                     Valider
                   </v-btn>
                 </v-card-actions>
@@ -60,26 +58,43 @@
             </v-dialog>
           </v-col>
 
-          <!-- <v-col cols="1">
-            <v-tooltip bottom>
+          <v-col cols="1">
+            <v-dialog v-model="dialog2" width="300">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   class="mx-2"
                   fab
                   dark
-                  color="info"
+                  color="success"
                   v-bind="attrs"
                   v-on="on"
                 >
-                  <v-icon dark> mdi-pencil </v-icon>
+                  <v-icon dark> mdi-plus </v-icon>
                 </v-btn>
               </template>
-              <span>Modifier</span>
-            </v-tooltip>
-          </v-col> -->
+              <v-card>
+                <v-card-title class="headline">
+                  Nouveau type
+                </v-card-title>
+
+                <v-card-text>
+                  <v-text-field
+                    label="Nom"
+                  ></v-text-field>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" text @click="dialog2 = false">
+                    Valider
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-col>
 
           <v-col cols="1">
-            <v-tooltip right>
+            <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   class="mx-2"
@@ -118,7 +133,8 @@ export default {
       "Sources",
       "Thèmes",
     ],
-    dialog: false,
+    dialog1: false,
+    dialog2: false,
     selected: 0,
   }),
 
