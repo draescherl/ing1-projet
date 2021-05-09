@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
 
 // Update
 router.put('/:id', (req, res) => {
-  db.query('UPDATE types SET ? WHERE id = ?', [req.body, req.params.id], (error, result) => {
+  db.query('UPDATE types SET name = ? WHERE id = ?', [req.body.name, req.params.id], (error, result) => {
     if (error) {
       console.log(error);
       res.status(400).send(error.code);
