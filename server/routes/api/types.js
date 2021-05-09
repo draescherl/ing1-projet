@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Create
 router.post('/', (req, res) => {
-  db.query('INSERT INTO types SET ?', [req.body], (error, result) => {
+  db.query('INSERT INTO types SET name = ?', [req.body.text], (error, result) => {
     if (error) {
       console.log(error);
       res.status(400).send(error.code);

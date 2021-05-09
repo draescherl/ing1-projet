@@ -15,16 +15,17 @@
     <div v-if="selected_tab(2)">
       <v-form>
         <v-row>
-          <v-col cols="4" class="offset-md-3">
+          <v-col cols="md-4 sm-12" class="offset-md-3">
             <v-select
-              :items="type"
+              :items="types_name"
+              v-model="selected_type"
               label="Type"
               outlined
             ></v-select>
           </v-col>
 
-          <v-col cols="1">
-            <v-dialog v-model="dialog1" width="300">
+          <v-col cols="md-1 sm-2">
+            <v-dialog v-model="dialog_update" width="300">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   class="mx-2"
@@ -38,19 +39,15 @@
                 </v-btn>
               </template>
               <v-card>
-                <v-card-title class="headline">
-                  Modifier type
-                </v-card-title>
+                <v-card-title class="headline"> Modifier type </v-card-title>
 
                 <v-card-text>
-                  <v-text-field
-                    label="Nouveau nom"
-                  ></v-text-field>
+                  <v-text-field label="Nouveau nom"></v-text-field>
                 </v-card-text>
 
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" text @click="dialog1 = false">
+                  <v-btn color="primary" text @click="dialog_update = false">
                     Valider
                   </v-btn>
                 </v-card-actions>
@@ -58,8 +55,8 @@
             </v-dialog>
           </v-col>
 
-          <v-col cols="1">
-            <v-dialog v-model="dialog2" width="300">
+          <v-col cols="md-1 sm-2">
+            <v-dialog v-model="dialog_create" width="300">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   class="mx-2"
@@ -73,19 +70,22 @@
                 </v-btn>
               </template>
               <v-card>
-                <v-card-title class="headline">
-                  Nouveau type
-                </v-card-title>
+                <v-card-title class="headline"> Nouveau type </v-card-title>
 
                 <v-card-text>
-                  <v-text-field
-                    label="Nom"
-                  ></v-text-field>
+                  <v-text-field label="Nom" v-model="new_name"></v-text-field>
                 </v-card-text>
 
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" text @click="dialog2 = false">
+                  <v-btn
+                    color="primary"
+                    text
+                    @click="
+                      dialog_create = false;
+                      create();
+                    "
+                  >
                     Valider
                   </v-btn>
                 </v-card-actions>
@@ -93,22 +93,45 @@
             </v-dialog>
           </v-col>
 
-          <v-col cols="1">
-            <v-tooltip bottom>
+          <v-col cols="md-1 sm-2">
+            <v-dialog v-model="dialog_delete" persistent max-width="300">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   class="mx-2"
                   fab
-                  dark
                   color="error"
+                  dark
                   v-bind="attrs"
                   v-on="on"
                 >
                   <v-icon dark> mdi-delete-forever </v-icon>
                 </v-btn>
               </template>
-              <span>Supprimer</span>
-            </v-tooltip>
+              <v-card>
+                <v-card-title class="headline"> Supprimer type </v-card-title>
+                <v-card-text>
+                  Confirmer la suppression du type
+                  <span class="font-italic">{{ selected_type }}</span> ? Cette
+                  opération est irréversible.
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="success" text @click="dialog_delete = false">
+                    Annuler
+                  </v-btn>
+                  <v-btn
+                    color="error"
+                    text
+                    @click="
+                      dialog_delete = false;
+                      remove();
+                    "
+                  >
+                    Confirmer
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
           </v-col>
         </v-row>
       </v-form>
@@ -120,6 +143,8 @@
 </template>
 
 <script>
+import TypeService from "../services/TypeService";
+
 export default {
   name: "Administration",
   components: {},
@@ -133,9 +158,18 @@ export default {
       "Sources",
       "Thèmes",
     ],
-    dialog1: false,
-    dialog2: false,
+
     selected: 0,
+
+    dialog_update: false,
+    dialog_create: false,
+    dialog_delete: false,
+
+    types_name: [],
+    types_id: [],
+
+    new_name: "",
+    selected_type: "",
   }),
 
   methods: {
@@ -146,6 +180,32 @@ export default {
     selected_tab(tab) {
       return this.selected == tab;
     },
+
+    async refresh_types() {
+      const types = await TypeService.getAll();
+      types.forEach((e) => {
+        this.types_name.push(e.name);
+        this.types_id.push(e.id);
+      });
+    },
+
+    async create() {
+      TypeService.post(this.new_name);
+      await this.refresh_types();
+    },
+
+    async remove() {
+      let index = this.types_name.indexOf(this.selected_type);
+      let id = this.types_id[index];
+      TypeService.delete(id);
+      this.selected_type = "";
+      this.types_name.splice(index, 1);
+      this.types_id.splice(index, 1);
+    },
+  },
+
+  async created() {
+    await this.refresh_types();
   },
 };
 </script>
