@@ -28,9 +28,11 @@ class TypeService {
     return axios.delete(`${url}${id}`);
   }
 
-  // static update(id) {
-  //   return axios.update(`${url}${id}`);
-  // }
+  static update(id, name) {
+    return axios.put(`${url}${id}`, {
+      name: name
+    });
+  }
 
 }
 

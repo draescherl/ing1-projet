@@ -42,12 +42,22 @@
                 <v-card-title class="headline"> Modifier type </v-card-title>
 
                 <v-card-text>
-                  <v-text-field label="Nouveau nom"></v-text-field>
+                  <v-text-field
+                    label="Nouveau nom"
+                    v-model="updated_name"
+                  ></v-text-field>
                 </v-card-text>
 
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" text @click="dialog_update = false">
+                  <v-btn
+                    color="primary"
+                    text
+                    @click="
+                      dialog_update = false;
+                      update();
+                    "
+                  >
                     Valider
                   </v-btn>
                 </v-card-actions>
@@ -169,6 +179,7 @@ export default {
     types_id: [],
 
     new_name: "",
+    updated_name: "",
     selected_type: "",
   }),
 
@@ -182,11 +193,22 @@ export default {
     },
 
     async refresh_types() {
-      const types = await TypeService.getAll();
+      this.types_name = [];
+      this.types_id = [];
+      let types = await TypeService.getAll();
       types.forEach((e) => {
         this.types_name.push(e.name);
         this.types_id.push(e.id);
       });
+    },
+
+    async update() {
+      let index = this.types_name.indexOf(this.selected_type);
+      let id = this.types_id[index];
+      TypeService.update(id, this.updated_name);
+      this.selected_type = this.updated_name;
+      this.updated_name = "";
+      await this.refresh_types();
     },
 
     async create() {
@@ -194,7 +216,7 @@ export default {
       await this.refresh_types();
     },
 
-    async remove() {
+    remove() {
       let index = this.types_name.indexOf(this.selected_type);
       let id = this.types_id[index];
       TypeService.delete(id);
