@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'api/themes';
+const url = 'api/themes/';
 
 class ThemeService {
 
@@ -18,14 +18,20 @@ class ThemeService {
     });
   }
 
-  static post(text) {
+  static post(name) {
     return axios.post(url, {
-      text: text
+      name: name
     });
   }
 
   static delete(id) {
     return axios.delete(`${url}${id}`);
+  }
+
+  static update(id, name) {
+    return axios.put(`${url}${id}`, {
+      name: name
+    });
   }
 
 }
