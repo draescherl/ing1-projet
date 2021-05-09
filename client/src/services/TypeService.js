@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'api/types';
+const url = 'api/types/';
 
 class TypeService {
 
@@ -27,6 +27,10 @@ class TypeService {
   static delete(id) {
     return axios.delete(`${url}${id}`);
   }
+
+  // static update(id) {
+  //   return axios.update(`${url}${id}`);
+  // }
 
 }
 
