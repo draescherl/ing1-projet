@@ -10,21 +10,33 @@
       </v-tab>
     </v-tabs>
 
-    <div v-if="selected_tab(0)"></div>
-    <div v-if="selected_tab(1)"></div>
-    <div v-if="selected_tab(2)"><AdminTypes /></div>
-    <div v-if="selected_tab(3)"></div>
-    <div v-if="selected_tab(4)"></div>
-    <div v-if="selected_tab(5)"></div>
+    <div v-if="selected_tab(0)"><Retombees /></div>
+    <div v-if="selected_tab(1)"><Communiques /></div>
+    <div v-if="selected_tab(2)"><Types /></div>
+    <div v-if="selected_tab(3)"><Departements /></div>
+    <div v-if="selected_tab(4)"><Sources /></div>
+    <div v-if="selected_tab(5)"><Themes /></div>
   </div>
 </template>
 
 <script>
-import AdminTypes from "../components/admin/Types";
+import Communiques from "../components/admin/Communiques";
+import Departements from "../components/admin/Departements";
+import Retombees from "../components/admin/Retombees";
+import Sources from "../components/admin/Sources";
+import Themes from "../components/admin/Themes";
+import Types from "../components/admin/Types";
 
 export default {
   name: "Administration",
-  components: { AdminTypes },
+  components: {
+    Communiques,
+    Departements,
+    Retombees,
+    Sources,
+    Themes,
+    Types,
+  },
 
   data: () => ({
     tab_items: [

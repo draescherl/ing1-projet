@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'api/departements';
+const url = 'api/departements/';
 
 class DepartementService {
 
@@ -18,14 +18,20 @@ class DepartementService {
     });
   }
 
-  static post(text) {
+  static post(num) {
     return axios.post(url, {
-      text: text
+      num: num
     });
   }
 
   static delete(id) {
     return axios.delete(`${url}${id}`);
+  }
+
+  static update(id, num) {
+    return axios.put(`${url}${id}`, {
+      num: num
+    });
   }
 
 }

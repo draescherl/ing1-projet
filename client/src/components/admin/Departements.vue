@@ -3,9 +3,9 @@
     <v-row>
       <v-col cols="md-4 sm-12" class="offset-md-3">
         <v-select
-          :items="types_name"
-          v-model="selected_type"
-          label="Type"
+          :items="departements_num"
+          v-model="selected_departement"
+          label="Département"
           outlined
         ></v-select>
       </v-col>
@@ -18,12 +18,12 @@
             </v-btn>
           </template>
           <v-card>
-            <v-card-title class="headline"> Modifier type </v-card-title>
+            <v-card-title class="headline"> Modifier département </v-card-title>
 
             <v-card-text>
               <v-text-field
-                label="Nouveau nom"
-                v-model="updated_name"
+                label="Nouveau numéro"
+                v-model="updated_num"
               ></v-text-field>
             </v-card-text>
 
@@ -59,10 +59,10 @@
             </v-btn>
           </template>
           <v-card>
-            <v-card-title class="headline"> Nouveau type </v-card-title>
+            <v-card-title class="headline"> Nouveau département </v-card-title>
 
             <v-card-text>
-              <v-text-field label="Nom" v-model="new_name"></v-text-field>
+              <v-text-field label="Nom" v-model="new_num"></v-text-field>
             </v-card-text>
 
             <v-card-actions>
@@ -90,10 +90,10 @@
             </v-btn>
           </template>
           <v-card>
-            <v-card-title class="headline"> Supprimer type </v-card-title>
+            <v-card-title class="headline"> Supprimer département </v-card-title>
             <v-card-text>
-              Confirmer la suppression du type
-              <span class="font-italic">{{ selected_type }}</span> ? Cette
+              Confirmer la suppression du département
+              <span class="font-italic">{{ selected_departement }}</span> ? Cette
               opération est irréversible.
             </v-card-text>
             <v-card-actions>
@@ -120,61 +120,61 @@
 </template>
 
 <script>
-import TypeService from "../../services/TypeService"
+import DepartementService from "../../services/DepartementService"
 
 export default {
-  name: "Types",
+  name: "Departements",
 
   data: () => ({
     dialog_update: false,
     dialog_create: false,
     dialog_delete: false,
 
-    types_name: [],
-    types_id: [],
+    departements_num: [],
+    departements_id: [],
 
-    new_name: "",
-    updated_name: "",
-    selected_type: "",
+    new_num: "",
+    updated_num: "",
+    selected_departement: "",
   }),
 
   methods: {
-    async refresh_types() {
-      this.types_name = [];
-      this.types_id = [];
-      let types = await TypeService.getAll();
-      types.forEach((e) => {
-        this.types_name.push(e.name);
-        this.types_id.push(e.id);
+    async refresh_departements() {
+      this.departements_num = [];
+      this.departements_id = [];
+      let departements = await DepartementService.getAll();
+      departements.forEach((e) => {
+        this.departements_num.push(e.num);
+        this.departements_id.push(e.id);
       });
     },
 
     async update() {
-      let index = this.types_name.indexOf(this.selected_type);
-      let id = this.types_id[index];
-      TypeService.update(id, this.updated_name);
-      this.selected_type = this.updated_name;
-      this.updated_name = "";
-      await this.refresh_types();
+      let index = this.departements_num.indexOf(this.selected_departement);
+      let id = this.departements_id[index];
+      DepartementService.update(id, this.updated_num);
+      this.selected_departement = parseInt(this.updated_num);
+      this.updated_num = "";
+      await this.refresh_departements();
     },
 
     async create() {
-      TypeService.post(this.new_name);
-      await this.refresh_types();
+      DepartementService.post(this.new_num);
+      await this.refresh_departements();
     },
 
     remove() {
-      let index = this.types_name.indexOf(this.selected_type);
-      let id = this.types_id[index];
-      TypeService.delete(id);
-      this.selected_type = "";
-      this.types_name.splice(index, 1);
-      this.types_id.splice(index, 1);
+      let index = this.departements_num.indexOf(this.selected_departement);
+      let id = this.departements_id[index];
+      DepartementService.delete(id);
+      this.selected_departement = "";
+      this.departements_num.splice(index, 1);
+      this.departements_id.splice(index, 1);
     },
   },
 
   async created() {
-    await this.refresh_types();
+    await this.refresh_departements();
   },
 }
 </script>
