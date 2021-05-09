@@ -12,10 +12,10 @@
 
     <div v-if="selected_tab(0)"><Retombees /></div>
     <div v-if="selected_tab(1)"><Communiques /></div>
-    <div v-if="selected_tab(2)"><Types /></div>
-    <div v-if="selected_tab(3)"><Departements /></div>
-    <div v-if="selected_tab(4)"><Sources /></div>
-    <div v-if="selected_tab(5)"><Themes /></div>
+    <div v-if="selected_tab(2)"><Departements /></div>
+    <div v-if="selected_tab(3)"><Sources /></div>
+    <div v-if="selected_tab(4)"><Themes /></div>
+    <div v-if="selected_tab(5)"><Types /></div>
   </div>
 </template>
 
@@ -42,10 +42,10 @@ export default {
     tab_items: [
       "Retombées presse",
       "Communiqués de presse",
-      "Types",
       "Départements",
       "Sources",
       "Thèmes",
+      "Types",
     ],
 
     selected: 0,
