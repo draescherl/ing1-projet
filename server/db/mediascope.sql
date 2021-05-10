@@ -9,7 +9,7 @@ CREATE DATABASE mediascope;
 USE mediascope;
 
 DROP USER IF EXISTS 'enedis'@'localhost';
-CREATE USER 'enedis'@'localhost' IDENTIFIED BY 'mdp';
+CREATE USER 'enedis'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mdp';
 GRANT ALL PRIVILEGES ON mediascope.* to 'enedis'@'localhost';
 
 CREATE TABLE conotations (
