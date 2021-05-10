@@ -72,7 +72,7 @@ export default {
         let type_id = this.departements_id[type_index];
         let dep_id = this.departements_id[dep_index];
 
-        let sources = await SourceService.getAll(type_id, dep_id);
+        let sources = await SourceService.getAll_with_TypeDepartement(type_id, dep_id);
         this.sources_name = [];
         this.sources_id = [];
 
