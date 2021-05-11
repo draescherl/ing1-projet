@@ -5,6 +5,7 @@
         <v-select
           :items="themes_name"
           v-model="selected_theme"
+          @change="select_items()"
           label="Thème"
           outlined
         ></v-select>
@@ -171,6 +172,10 @@ export default {
       this.themes_name.splice(index, 1);
       this.themes_id.splice(index, 1);
     },
+
+    select_items() {
+      this.updated_name = this.selected_theme;
+    }
   },
 
   async created() {

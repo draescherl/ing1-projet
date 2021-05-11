@@ -5,6 +5,7 @@
         <v-select
           :items="departements_num"
           v-model="selected_departement"
+          @change="select_items()"
           label="Département"
           outlined
         ></v-select>
@@ -171,6 +172,10 @@ export default {
       this.departements_num.splice(index, 1);
       this.departements_id.splice(index, 1);
     },
+
+    select_items() {
+      this.updated_num = this.selected_departement;
+    }
   },
 
   async created() {
