@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 
 // Read
 router.get('/', (req, res) => {
-  db.query('SELECT * FROM types', (error, result) => {
+  db.query('SELECT * FROM types ORDER BY id', (error, result) => {
     if (error) {
       console.log(error);
       res.status(400).send(error.code);

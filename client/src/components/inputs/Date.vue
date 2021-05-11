@@ -35,8 +35,11 @@
 export default {
   name: "InputDate",
 
+  props: ["initial_date"],
+
   data: (vm) => ({
-    date: new Date().toISOString().substr(0, 10),
+    // date: new Date().toISOString().substr(0, 10),
+    date: "",
     dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
     menu: false,
   }),
@@ -74,6 +77,8 @@ export default {
      * the user.
      */
     this.update();
-  }
+
+    this.date = (this.initial_date) ? this.initial_date : new Date().toISOString().substr(0, 10);
+  },
 };
 </script>
