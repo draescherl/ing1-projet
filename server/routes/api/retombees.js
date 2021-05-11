@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
 
 // Read
 router.get('/', (req, res) => {
-  db.query('SELECT * FROM retombees', (error, result) => {
+  db.query('SELECT * FROM retombees ORDER BY id', (error, result) => {
     if (error) {
       console.log(error);
       res.status(400).send(error.code);

@@ -19,6 +19,7 @@ router.post('/', (req, res) => {
 // Read
 router.get('/', (req, res) => {
   let query = (req.query.type_id && req.query.departement_id) ? 'SELECT * FROM sources WHERE type = ? AND departement = ?' : 'SELECT * FROM sources';
+  query += ' ORDER BY id';
   db.query(query, [req.query.type_id, req.query.departement_id], (error, result) => {
     if (error) {
       console.log(error);
