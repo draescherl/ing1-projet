@@ -5,6 +5,7 @@
         <v-select
           :items="types_name"
           v-model="selected_type"
+          @change="select_items()"
           label="Type"
           outlined
         ></v-select>
@@ -171,6 +172,10 @@ export default {
       this.types_name.splice(index, 1);
       this.types_id.splice(index, 1);
     },
+
+    select_items() {
+      this.updated_name = this.selected_type;
+    }
   },
 
   async created() {
