@@ -80,7 +80,6 @@ export default {
 
     this.date = (this.initial_date) ? this.initial_date : new Date().toISOString().substr(0, 10);
     this.$emit("change", this.date);
-    console.log("date : " + this.date);
   },
 };
 </script>
