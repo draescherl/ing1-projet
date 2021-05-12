@@ -9,30 +9,30 @@ CREATE DATABASE mediascope;
 USE mediascope;
 
 DROP USER IF EXISTS '[redacted]'@'localhost';
-CREATE USER '[redacted]'@'localhost' IDENTIFIED BY 'mdp';
+CREATE USER '[redacted]'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mdp';
 GRANT ALL PRIVILEGES ON mediascope.* to '[redacted]'@'localhost';
 
 CREATE TABLE conotations (
   id TINYINT AUTO_INCREMENT,
-  name VARCHAR(15) NOT NULL,
+  name VARCHAR(15) NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE departements (
   id TINYINT AUTO_INCREMENT,
-  num TINYINT NOT NULL,
+  num TINYINT NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE themes (
   id TINYINT AUTO_INCREMENT,
-  name VARCHAR(50) NOT NULL,
+  name VARCHAR(50) NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE types (
   id TINYINT AUTO_INCREMENT,
-  name VARCHAR(20) NOT NULL,
+  name VARCHAR(20) NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 

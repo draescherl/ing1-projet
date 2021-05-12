@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const url = 'api/themes/';
+const url = 'api/conotations/';
 
-class ThemeService {
+class ConotationService {
 
   static getAll() {
     return new Promise((resolve, reject) => {
@@ -18,22 +18,6 @@ class ThemeService {
     });
   }
 
-  static post(name) {
-    return axios.post(url, {
-      name: name
-    });
-  }
-
-  static delete(id) {
-    return axios.delete(`${url}${id}`);
-  }
-
-  static update(id, name) {
-    return axios.put(`${url}${id}`, {
-      name: name
-    });
-  }
-
 }
 
-export default ThemeService;
+export default ConotationService;
