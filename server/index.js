@@ -22,6 +22,7 @@ const themes = require('./routes/api/themes');
 const retombees = require('./routes/api/retombees');
 const communiques = require('./routes/api/communiques');
 const files = require('./routes/api/files');
+const conotations = require('./routes/api/conotations');
 
 app.use('/api/types', types);
 app.use('/api/departements', departements);
@@ -30,6 +31,7 @@ app.use('/api/themes', themes);
 app.use('/api/retombees', retombees);
 app.use('/api/communiques', communiques);
 app.use('/api/files', files);
+app.use('/api/conotations', conotations);
 
 
 // Handle production :
