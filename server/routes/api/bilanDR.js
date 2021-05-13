@@ -45,9 +45,9 @@ router.get('/:table/:year/:trimestre/:query?/:id?', (req, res) => {
 
   let table = (req.params.table == 2) ? "communiques, retombees" : req.params.table;
   let query = `SELECT COUNT(*) AS cnt FROM ${table} WHERE ${conditions}`;
-  if (year == "2018" && req.params.query == 1) {
-    console.log(query);
-  }
+  // if (year == "2018" && req.params.query == 1) {
+  //   console.log(query);
+  // }
 
   db.query(query, (error, result) => {
     if (error) {

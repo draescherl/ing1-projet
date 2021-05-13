@@ -27,6 +27,7 @@ const dates = require('./routes/api/dates');
 const bilanDR = require('./routes/api/bilanDR');
 const bilanDep = require('./routes/api/bilanDep');
 const bilanMonth = require('./routes/api/bilanMonth');
+const utils = require('./routes/api/utils');
 
 app.use('/api/types', types);
 app.use('/api/departements', departements);
@@ -40,6 +41,7 @@ app.use('/api/dates', dates);
 app.use('/api/bilandr', bilanDR);
 app.use('/api/bilandep', bilanDep);
 app.use('/api/bilanmonth', bilanMonth);
+app.use('/api/utils', utils);
 
 
 // Handle production :

@@ -45,7 +45,7 @@ router.get('/:table/:year/:month/:dep/:query?/:id?/:id2?', (req, res) => {
       break;
   }
 
-  let query = `SELECT COUNT(*) FROM ${table} WHERE ${conditions}`;
+  let query = `SELECT COUNT(*) AS cnt FROM ${table} WHERE ${conditions}`;
   console.log(query);
 
   db.query(query, (error, result) => {

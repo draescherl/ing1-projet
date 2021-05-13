@@ -10,22 +10,22 @@
       </v-tab>
     </v-tabs>
 
-    <div v-if="selected_tab(0)"><BilanDR /></div>
-    <div v-if="selected_tab(1)"><BilanDep :dep="40" /></div>
-    <div v-if="selected_tab(2)"><BilanDep :dep="64" /></div>
-    <div v-if="selected_tab(3)"><BilanDep :dep="65" /></div>
-    <div v-if="selected_tab(4)"><Month :month="1" /></div>
-    <div v-if="selected_tab(5)"><Month :month="2" /></div>
-    <div v-if="selected_tab(6)"><Month :month="3" /></div>
-    <div v-if="selected_tab(7)"><Month :month="4" /></div>
-    <div v-if="selected_tab(8)"><Month :month="5" /></div>
-    <div v-if="selected_tab(9)"><Month :month="6" /></div>
-    <div v-if="selected_tab(10)"><Month :month="7" /></div>
-    <div v-if="selected_tab(11)"><Month :month="8" /></div>
-    <div v-if="selected_tab(12)"><Month :month="9" /></div>
-    <div v-if="selected_tab(13)"><Month :month="10" /></div>
-    <div v-if="selected_tab(14)"><Month :month="11" /></div>
-    <div v-if="selected_tab(15)"><Month :month="12" /></div>
+    <div><BilanDR v-if="selected_tab(0)"/></div>
+    <div><BilanDep :dep="40" v-if="selected_tab(1)"/></div>
+    <div><BilanDep :dep="64" v-if="selected_tab(2)"/></div>
+    <div><BilanDep :dep="65" v-if="selected_tab(3)"/></div>
+    <div><Month :month="1" v-if="selected_tab(4)"/></div>
+    <div><Month :month="2" v-if="selected_tab(5)"/></div>
+    <div><Month :month="3" v-if="selected_tab(6)"/></div>
+    <div><Month :month="4" v-if="selected_tab(7)"/></div>
+    <div><Month :month="5" v-if="selected_tab(8)"/></div>
+    <div><Month :month="6" v-if="selected_tab(9)"/></div>
+    <div><Month :month="7" v-if="selected_tab(10)"/></div>
+    <div><Month :month="8" v-if="selected_tab(11)"/></div>
+    <div><Month :month="9" v-if="selected_tab(12)"/></div>
+    <div><Month :month="10" v-if="selected_tab(13)"/></div>
+    <div><Month :month="11" v-if="selected_tab(14)"/></div>
+    <div><Month :month="12" v-if="selected_tab(15)"/></div>
   </div>
 </template>
 
