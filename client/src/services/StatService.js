@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const url_dr = 'api/bilandr/';
-// const url_dep = 'api/bilandep/';
+const url_dep = 'api/bilandep/';
 // const url_month = 'api/bilan_month/';
 const url_date = 'api/dates/';
+const url_utils = 'api/utils/';
 
 class StatService {
 
@@ -40,6 +41,25 @@ class StatService {
     });
   }
 
+  static departementToId(departement) {
+    return new Promise((resolve, reject) => {
+      axios.get(`${url_utils}departement-to-id/${departement}`).then(res => {
+        let tmp = [];
+        const data = res.data;
+
+        // Here we loop through the response object and extract the data 
+        Object.keys(data).forEach(index => tmp.push(data[index]));
+        let id = tmp[0].id;
+
+        resolve(id);
+      }).catch(err => {
+        reject(err);
+      });
+    });
+  }
+
+
+
   static getCP(year, trimestre) {
     return this.template(`${url_dr}communiques/${year}/${trimestre}`);
   }
@@ -58,6 +78,28 @@ class StatService {
   
   static getRetombeesType(year, trimestre, type) {
     return this.template(`${url_dr}retombees/${year}/${trimestre}/3/${type}`);
+  }
+
+
+
+  static getCP_byDepartement(year, trimestre, departement) {
+    return this.template(`${url_dep}communiques/${year}/${trimestre}/${departement}`);
+  }
+
+  static getRetombeesCP_byDepartement(year, trimestre, departement) {
+    return this.template(`${url_dep}2/${year}/${trimestre}/${departement}/1`);
+  }
+
+  static getRetombees_byDepartement(year, trimestre, departement) {
+    return this.template(`${url_dep}retombees/${year}/${trimestre}/${departement}`);
+  }
+  
+  static getRetombeesConotation_byDepartement(year, trimestre, conotation, departement) {
+    return this.template(`${url_dep}retombees/${year}/${trimestre}/${departement}/2/${conotation}`);
+  }
+  
+  static getRetombeesType_byDepartement(year, trimestre, type, departement) {
+    return this.template(`${url_dep}retombees/${year}/${trimestre}/${departement}/3/${type}`);
   }
 
 }
