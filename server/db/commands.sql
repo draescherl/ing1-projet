@@ -1,3 +1,6 @@
+-- date la plus ancienne
+SELECT MIN(publi_date) FROM retombees;
+
 -- total tonalités
 SELECT COUNT(*) FROM retombees WHERE conotation = (SELECT id FROM conotations WHERE name = "Positive");
 -- tonalités par département
