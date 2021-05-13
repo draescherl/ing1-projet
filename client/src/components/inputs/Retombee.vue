@@ -146,7 +146,7 @@ export default {
       let data = {
         publi_date: this.selected_date,
         title: this.selected_title,
-        cp_code: this.selected_code,
+        cp_code: (this.selected_code == '') ? '0' : this.selected_code,
         type: this.selected_type,
         departement: this.selected_department,
         source: this.selected_source,

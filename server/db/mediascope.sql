@@ -50,7 +50,7 @@ CREATE TABLE retombees (
   id INT AUTO_INCREMENT,
   publi_date DATE NOT NULL,
   title VARCHAR(100) NOT NULL UNIQUE,
-  cp_code INT NOT NULL,
+  cp_code INT,
   type TINYINT NOT NULL,
   departement TINYINT NOT NULL,
   source SMALLINT NOT NULL,
