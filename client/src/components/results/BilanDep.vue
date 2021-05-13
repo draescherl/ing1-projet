@@ -3,8 +3,8 @@
     <div v-for="n in iterations" :key="n">
       <h4 class="mt-4">{{ parseInt(current_year) - n + 1 }}</h4>
       <v-data-table
-        :headers="headers_dr"
-        :items="bilan_dr[n - 1]"
+        :headers="headers"
+        :items="bilan[n - 1]"
         :sort-by="[]"
         :sort-desc="[false, true]"
         :hide-default-footer="true"
@@ -28,7 +28,7 @@ export default {
     current_year: new Date().getFullYear(),
     iterations: 0,
 
-    headers_dr: [
+    headers: [
       {
         text: "Trimestre",
         align: "start",
@@ -45,7 +45,7 @@ export default {
       { text: "Radio", value: "retombees_radio" },
       { text: "TV", value: "retombees_tv" },
     ],
-    bilan_dr: [],
+    bilan: [],
   }),
 
   methods: {},
@@ -55,8 +55,6 @@ export default {
     this.iterations = this.current_year - this.oldest_year + 1;
     
     let departement_id = await StatService.departementToId(this.$props.dep);
-    console.log("num : " + this.$props);
-    console.log("id : " + departement_id);
     
     let tmp;
     let data = {};
@@ -127,7 +125,7 @@ export default {
         tmp_array.push(data);
         data = {};
       }
-      this.bilan_dr.push(tmp_array);
+      this.bilan.push(tmp_array);
       tmp_array = [];
     }
   },

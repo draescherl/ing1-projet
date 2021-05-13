@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const url_dr = 'api/bilandr/';
 const url_dep = 'api/bilandep/';
-// const url_month = 'api/bilan_month/';
+const url_month = 'api/bilan_month/';
 const url_date = 'api/dates/';
 const url_utils = 'api/utils/';
 
@@ -71,11 +71,11 @@ class StatService {
   static getRetombees(year, trimestre) {
     return this.template(`${url_dr}retombees/${year}/${trimestre}`);
   }
-  
+
   static getRetombeesConotation(year, trimestre, conotation) {
     return this.template(`${url_dr}retombees/${year}/${trimestre}/2/${conotation}`);
   }
-  
+
   static getRetombeesType(year, trimestre, type) {
     return this.template(`${url_dr}retombees/${year}/${trimestre}/3/${type}`);
   }
@@ -93,13 +93,45 @@ class StatService {
   static getRetombees_byDepartement(year, trimestre, departement) {
     return this.template(`${url_dep}retombees/${year}/${trimestre}/${departement}`);
   }
-  
+
   static getRetombeesConotation_byDepartement(year, trimestre, conotation, departement) {
     return this.template(`${url_dep}retombees/${year}/${trimestre}/${departement}/2/${conotation}`);
   }
-  
+
   static getRetombeesType_byDepartement(year, trimestre, type, departement) {
     return this.template(`${url_dep}retombees/${year}/${trimestre}/${departement}/3/${type}`);
+  }
+
+
+
+  static getRetombeesConotation_byMonthAndDepartement(month, dep, conotation) {
+    let year = new Date().getFullYear();
+    return this.template(`${url_month}retombees/${year}/${month}/${dep}/1/${conotation}`);
+  }
+  
+  static getRetombeesType_byMonthAndDepartement(month, dep, type) {
+    let year = new Date().getFullYear();
+    return this.template(`${url_month}retombees/${year}/${month}/${dep}/2/${type}`);
+  }
+  
+  static getCP_byMonthAndDepartement(month, dep){
+    let year = new Date().getFullYear();
+    return this.template(`${url_month}communiques/${year}/${month}/${dep}`);
+  }
+  
+  static getRetombeesCP_byMonthAndDepartement(month, dep) {
+    let year = new Date().getFullYear();
+    return this.template(`${url_month}2/${year}/${month}/${dep}/3`);
+  }
+  
+  static getRetombeesThemes_byMonthAndDepartement(month, dep, theme) {
+    let year = new Date().getFullYear();
+    return this.template(`${url_month}retombees/${year}/${month}/${dep}/4/${theme}`);
+  }
+  
+  static getRetombeesThemesConotation_byMonthAndDepartement(month, dep, theme, conotation) {
+    let year = new Date().getFullYear();
+    return this.template(`${url_month}retombees/${year}/${month}/${dep}/2/${conotation}/${theme}`);
   }
 
 }
