@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
 router.get('/:folder/:filename', (req, res) => {
   const folder = req.params.folder;
   const filename = req.params.filename;
-  res.download(`uploads/${folder}/${filename}`)
+  res.download(`uploads/${folder}/${filename}`);
 });
 
 module.exports = router;
