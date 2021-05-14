@@ -1,4 +1,5 @@
 import axios from 'axios';
+const FileDownload = require('js-file-download');
 
 const url = 'api/communiques/';
 
@@ -24,6 +25,13 @@ class CommuniqueService {
     });
   }
 
+  static getFile(filename) {
+    const url_test = `api/files/communique/${filename}`;
+    axios.get(url_test, { responseType: 'blob' }).then((response) => {
+      FileDownload(response.data, filename);
+    });
+  }
+
   static post(data) {
     return axios.post(url, {
       publi_date: data.publi_date,
@@ -32,7 +40,7 @@ class CommuniqueService {
       type: data.type,
       departement: data.departement,
       theme: data.theme,
-      // pdf_path: data.pdf_path,
+      pdf_path: data.pdf_path,
       hyperlink: data.hyperlink
     });
   }
@@ -42,6 +50,7 @@ class CommuniqueService {
   }
 
   static update(id, date, title, code, type, departement, theme, path, hyperlink) {
+    console.log(path);
     return axios.put(`${url}${id}`, {
       date, title, code, type, departement, theme, path, hyperlink
     });

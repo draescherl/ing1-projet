@@ -54,11 +54,11 @@ router.put('/:id', (req, res) => {
       let type = (req.body.type) ? req.body.type : result[0].type;
       let departement = (req.body.departement) ? req.body.departement : result[0].departement;
       let theme = (req.body.theme) ? req.body.theme : result[0].theme;
-      // let pdf = (req.body.path) ? req.body.path : result[0].pdf_path;
+      let pdf = (req.body.path) ? req.body.path : result[0].pdf_path;
       let link = (req.body.hyperlink) ? req.body.hyperlink : result[0].hyperlink;
       
-      let query = 'UPDATE communiques SET publi_date = ?, title = ?, cp_code = ?, type = ?, departement = ?, theme = ?, hyperlink = ? WHERE id = ?';
-      db.query(query, [date, title, code, type, departement, theme, link, req.params.id], (error2, result2) => {
+      let query = 'UPDATE communiques SET publi_date = ?, title = ?, cp_code = ?, type = ?, departement = ?, theme = ?, pdf_path = ?, hyperlink = ? WHERE id = ?';
+      db.query(query, [date, title, code, type, departement, theme, pdf, link, req.params.id], (error2, result2) => {
         if (error2) {
           console.log(error2);
           res.status(400).send(error2.code);
