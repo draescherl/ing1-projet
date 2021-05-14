@@ -49,7 +49,7 @@ CREATE TABLE sources (
 CREATE TABLE retombees (
   id INT AUTO_INCREMENT,
   publi_date DATE NOT NULL,
-  title VARCHAR(100) NOT NULL UNIQUE,
+  title VARCHAR(100) NOT NULL,
   cp_code INT,
   type TINYINT NOT NULL,
   departement TINYINT NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE retombees (
 CREATE TABLE communiques (
   id INT AUTO_INCREMENT,
   publi_date DATE NOT NULL,
-  title VARCHAR(100) NOT NULL UNIQUE,
+  title VARCHAR(100) NOT NULL,
   cp_code INT NOT NULL,
   type TINYINT NOT NULL,
   departement TINYINT NOT NULL,
