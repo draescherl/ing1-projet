@@ -19,7 +19,7 @@
             </v-btn>
           </template>
           <v-card>
-            <v-card-title class="headline"> Modifier communiqué </v-card-title>
+            <v-card-title class="headline"> Modifier Retombée </v-card-title>
 
             <v-card-text>
               <p class="font-italic">
@@ -75,11 +75,12 @@
                   color="error"
                 ></v-radio>
               </v-radio-group>
-              <!-- pdf -->
+              <v-btn v-if="selected_pdf != null" color="primary" text @click="downloadFile()"> Télécharger PDF </v-btn>
               <v-text-field
                 label="Nouveau lien"
                 v-model="updated_link"
               ></v-text-field>
+              <v-btn v-if="updated_link != null" color="primary" text @click="openUrl()"> Ouvrir lien </v-btn>
             </v-card-text>
 
             <v-card-actions>
@@ -107,7 +108,7 @@
             </v-btn>
           </template>
           <v-card>
-            <v-card-title class="headline"> Supprimer communiqué </v-card-title>
+            <v-card-title class="headline"> Supprimer retombée </v-card-title>
             <v-card-text>
               Confirmer la suppression du communiqué
               <span class="font-italic">{{ selected_retombee }}</span> ? Cette
@@ -200,6 +201,7 @@ export default {
     selected_source: "",
     selected_theme: "",
     selected_conotation: "",
+    selected_pdf: "",
   }),
 
   methods: {
@@ -314,11 +316,22 @@ export default {
       this.updated_code = this.retombees_code[retombees_index];
       this.updated_link = this.retombees_link[retombees_index];
       this.selected_date = this.retombees_date[retombees_index];
+      this.selected_pdf = this.retombees_pdf[retombees_index];
     },
 
     updateDate(value) {
       this.selected_date = value;
     },
+
+    downloadFile() {
+      const filename = this.selected_pdf;
+      RetombeeService.getFile(filename);
+    },
+
+    openUrl() {
+      const url = "http://" + this.updated_link;
+      window.open(url, "_blank");
+    }
   },
 
   async created() {
