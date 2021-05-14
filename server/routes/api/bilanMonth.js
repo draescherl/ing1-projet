@@ -6,12 +6,16 @@ const router = express.Router();
 
 
 router.get('/:table/:year/:month/:dep/:query?/:id?/:id2?', (req, res) => {
+  
   let dep = (req.params.table == 2) ? "retombees.departement" : "departement";
   let year = req.params.year;
   let date = (req.params.table == 2) ? "retombees.publi_date" : "publi_date";
   let month = req.params.month;
   let table = (req.params.table == 2) ? "communiques, retombees" : req.params.table;
-  let timeframe = `((DATEDIFF('${year}-${month}-31', ${date}) >= 0) AND (DATEDIFF(${date}, '${year}-${month}-01') >= 0))`;
+  
+  let days_per_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  let day = days_per_month[month - 1];
+  let timeframe = `((DATEDIFF('${year}-${month}-${day}', ${date}) >= 0) AND (DATEDIFF(${date}, '${year}-${month}-01') >= 0))`;
 
   let conditions = timeframe;
   conditions += ` AND ${dep} = ${req.params.dep}`;
