@@ -49,9 +49,10 @@ class CommuniqueService {
     return axios.delete(`${url}${id}`);
   }
 
-  static update(id, date, title, code, type, departement, theme, hyperlink) {
+  static update(id, date, title, code, type, departement, theme, path, hyperlink) {
+    console.log(path);
     return axios.put(`${url}${id}`, {
-      date, title, code, type, departement, theme, hyperlink
+      date, title, code, type, departement, theme, path, hyperlink
     });
   }
 
