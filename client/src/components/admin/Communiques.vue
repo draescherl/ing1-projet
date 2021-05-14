@@ -57,11 +57,37 @@
                 label="Thème"
                 outlined
               ></v-select>
-              <!-- pdf -->
+              <v-file-input
+                show-size
+                truncate-length="40"
+                label="Document format pdf"
+                accept=".PDF, .pdf"
+                ref="file"
+                @change="handleFileUpload"
+              ></v-file-input>
+              <p v-if="selected_pdf != null" class="font-italic">
+                Fichier existant : {{ selected_pdf }}
+              </p>
+              <v-btn
+                v-if="selected_pdf != null"
+                color="primary"
+                text
+                @click="downloadFile()"
+              >
+                Télécharger PDF
+              </v-btn>
               <v-text-field
                 label="Nouveau lien"
                 v-model="updated_link"
               ></v-text-field>
+              <v-btn
+                v-if="updated_link != null"
+                color="primary"
+                text
+                @click="openUrl()"
+              >
+                Ouvrir lien
+              </v-btn>
             </v-card-text>
 
             <v-card-actions>
@@ -170,6 +196,8 @@ export default {
     selected_theme: "",
     selected_type: "",
     selected_date: "",
+    selected_pdf: "",
+    file: "",
   }),
 
   methods: {
@@ -199,7 +227,6 @@ export default {
         formated_date = formated_date.split("-");
         formated_date[2]++; // The date returned by the db is one day behind for some reason ...
         formated_date = formated_date.join("-");
-        // formated_date = formated_date.reverse().join("/");
         this.communiques_date.push(formated_date);
       });
     },
@@ -220,8 +247,12 @@ export default {
       let theme_id = this.themes_id[theme_index];
       let date = this.selected_date.split("/").reverse().join("-");
 
-      // A CHANGER !!!
-      // let path = "path";
+      if (this.file) {
+        let formData = new FormData();
+        formData.append("pdf", this.file);
+        formData.append("source", "communique"); // Name of the subfolder where the file will be uploaded
+        CommuniqueService.postFile(formData);
+      }
 
       CommuniqueService.update(
         communique_id,
@@ -231,7 +262,7 @@ export default {
         type_id,
         departement_id,
         theme_id,
-        // path,
+        this.selected_pdf,
         this.updated_link
       );
 
@@ -272,10 +303,26 @@ export default {
       this.updated_code = this.communiques_code[communiques_index];
       this.updated_link = this.communiques_link[communiques_index];
       this.selected_date = this.communiques_date[communiques_index];
+      this.selected_pdf = this.communiques_pdf[communiques_index];
     },
 
     updateDate(value) {
       this.selected_date = value;
+    },
+
+    downloadFile() {
+      const filename = this.selected_pdf;
+      CommuniqueService.getFile(filename);
+    },
+
+    openUrl() {
+      const url = "http://" + this.updated_link;
+      window.open(url, "_blank");
+    },
+
+    handleFileUpload(event) {
+      this.file = event;
+      this.selected_pdf = event.name;
     },
   },
 
