@@ -10,7 +10,7 @@
       Communiqué ajouté avec succès.
     </v-alert>
 
-    <v-form>
+    <v-form ref="form" v-model="valid">
       <v-row>
         <v-col cols="4">
           <Date v-model="selected_date" @change="updateDate" />
@@ -19,6 +19,7 @@
           <v-text-field
             label="Titre"
             v-model="selected_title"
+            :rules="[(v) => !!v || 'Veuillez saisir un titre']"
             required
           ></v-text-field>
         </v-col>
@@ -26,6 +27,12 @@
           <v-text-field
             label="Code CP"
             v-model="selected_code"
+            :rules="[
+              (v) => !!v || 'Veuillez saisir un code',
+              (v) =>
+                Number.isInteger(parseInt(v)) ||
+                'Le code doit être un chiffre entier.',
+            ]"
             required
           ></v-text-field>
         </v-col>
@@ -37,7 +44,9 @@
             :items="type"
             label="Type"
             v-model="selected_type"
+            :rules="[(v) => !!v || 'Veuillez sélectionner un type']"
             outlined
+            required
           ></v-select>
         </v-col>
         <v-col cols="4">
@@ -45,7 +54,9 @@
             :items="departement"
             label="Département"
             v-model="selected_department"
+            :rules="[(v) => !!v || 'Veuillez sélectionner un département']"
             outlined
+            required
           ></v-select>
         </v-col>
         <v-col cols="4">
@@ -53,7 +64,9 @@
             :items="theme"
             label="Thème"
             v-model="selected_theme"
+            :rules="[(v) => !!v || 'Veuillez sélectionner un thème']"
             outlined
+            required
           ></v-select>
         </v-col>
       </v-row>
@@ -76,7 +89,9 @@
 
       <v-row>
         <v-col cols="12" class="d-flex justify-center">
-          <v-btn color="success" @click="validate"> Valider </v-btn>
+          <v-btn :disabled="!valid" color="success" @click="validate">
+            Valider
+          </v-btn>
         </v-col>
       </v-row>
     </v-form>
@@ -97,6 +112,7 @@ export default {
   props: ["type", "departement", "theme"],
 
   data: () => ({
+    valid: false,
     show: false,
     file: "",
     selected_date: null,
@@ -147,6 +163,8 @@ export default {
       this.selected_theme = null;
       this.selected_document = null;
       this.selected_link = null;
+
+      this.$refs.form.resetValidation();
     },
   },
 };
