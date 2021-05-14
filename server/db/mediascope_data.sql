@@ -157,3 +157,14 @@ INSERT INTO sources (name, type, departement) VALUES
   ("Radio 100% 65", (SELECT id FROM types WHERE name = "Web"), (SELECT id FROM departements WHERE num = 65)),
   ("Radio présence", (SELECT id FROM types WHERE name = "Web"), (SELECT id FROM departements WHERE num = 65)),
   ("Tarbes/Lourdes Infos", (SELECT id FROM types WHERE name = "Web"), (SELECT id FROM departements WHERE num = 65));
+
+INSERT INTO `communiques` (`id`, `publi_date`, `title`, `cp_code`, `type`, `departement`, `theme`, `pdf_path`, `hyperlink`) VALUES
+  (1, '2020-12-01', 'Enedis : Une semaine de chantier pour moderniser le réseau électrique de Castelnau Magnoac', 101, 1, 2, 9, NULL, NULL),
+  (2, '2020-12-03', 'LA RESIDENCE OREKA : ENEDIS ACCOMPAGNE BOUYGUES IMMOBILIER SUR LA ROUTE DE LA MOBILITE ELECTRIQUE', 102, 1, 2, 1, NULL, NULL),
+  (3, '2020-12-03', 'Le réseau électrique du quartier de la Raillère à Cauterets fait peau neuve', 103, 1, 3, 9, NULL, NULL),
+  (4, '2020-12-08', 'Fargues : une «Jarraf» atteint des sommets et facilite l’élagage', 104, 1, 1, 2, NULL, NULL);
+
+INSERT INTO `retombees` (`id`, `publi_date`, `title`, `cp_code`, `type`, `departement`, `source`, `theme`, `conotation`, `pdf_path`, `hyperlink`) VALUES
+  (1, '2020-12-02', 'Castelnau-Magnoac – Une semaine de chantier pour moderniser le réseau électrique', 102, 1, 3, 98, 9, 1, NULL, NULL),
+  (2, '2020-12-03', 'Le quartier de la railliere a cauteret fait peau neuve grâce au SDE65 et Enedis (facebook sde)', 103, 4, 3, 13, 9, 1, NULL, NULL),
+  (3, '2020-12-04', 'Enedis Renove', 101, 1, 3, 16, 9, 1, NULL, NULL);
