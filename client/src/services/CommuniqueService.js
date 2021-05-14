@@ -32,7 +32,7 @@ class CommuniqueService {
       type: data.type,
       departement: data.departement,
       theme: data.theme,
-      pdf_path: data.pdf_path,
+      // pdf_path: data.pdf_path,
       hyperlink: data.hyperlink
     });
   }
