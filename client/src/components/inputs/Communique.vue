@@ -1,5 +1,15 @@
 <template>
   <div class="mt-5">
+    <v-alert
+      v-if="show"
+      close-text="Close Alert"
+      color="success accent-4"
+      dark
+      dismissible
+    >
+      Communiqué ajouté avec succès.
+    </v-alert>
+
     <v-form>
       <v-row>
         <v-col cols="4">
@@ -87,6 +97,7 @@ export default {
   props: ["type", "departement", "theme"],
 
   data: () => ({
+    show: false,
     file: "",
     selected_date: null,
     selected_title: null,
@@ -125,6 +136,17 @@ export default {
         hyperlink: this.selected_link,
       };
       CommuniqueService.post(data);
+
+      this.show = true;
+      this.file = "";
+      this.selected_date = null;
+      this.selected_title = null;
+      this.selected_code = null;
+      this.selected_type = null;
+      this.selected_department = null;
+      this.selected_theme = null;
+      this.selected_document = null;
+      this.selected_link = null;
     },
   },
 };

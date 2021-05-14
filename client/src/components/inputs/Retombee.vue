@@ -1,5 +1,15 @@
 <template>
   <div class="mt-5">
+    <v-alert
+      v-if="show"
+      close-text="Close Alert"
+      color="success accent-4"
+      dark
+      dismissible
+    >
+      Retombée ajoutée avec succès.
+    </v-alert>
+
     <v-form>
       <v-row>
         <v-col cols="4">
@@ -94,7 +104,7 @@
     </v-form>
   </div>
 </template>
-
+ 
 <script>
 import Date from "./Date";
 import RetombeeService from "../../services/RetombeeService";
@@ -109,6 +119,7 @@ export default {
   props: ["type", "departement", "sources", "theme"],
 
   data: () => ({
+    show: false,
     row: null,
     file: "",
     selected_date: null,
@@ -146,7 +157,7 @@ export default {
       let data = {
         publi_date: this.selected_date,
         title: this.selected_title,
-        cp_code: (this.selected_code == '') ? '0' : this.selected_code,
+        cp_code: this.selected_code == "" ? "0" : this.selected_code,
         type: this.selected_type,
         departement: this.selected_department,
         source: this.selected_source,
@@ -156,6 +167,19 @@ export default {
         hyperlink: this.selected_link,
       };
       RetombeeService.post(data);
+
+      this.show = true;
+      this.file = "";
+      this.selected_date = null;
+      this.selected_title = null;
+      this.selected_code = null;
+      this.selected_type = null;
+      this.selected_department = null;
+      this.selected_source = null;
+      this.selected_theme = null;
+      this.selected_conotation = null;
+      this.selected_document = null;
+      this.selected_link = null;
     },
   },
 };
