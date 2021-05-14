@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const url_dr = 'api/bilandr/';
 const url_dep = 'api/bilandep/';
-const url_month = 'api/bilan_month/';
+const url_month = 'api/bilanmonth/';
 const url_date = 'api/dates/';
 const url_utils = 'api/utils/';
 
@@ -131,7 +131,7 @@ class StatService {
   
   static getRetombeesThemesConotation_byMonthAndDepartement(month, dep, theme, conotation) {
     let year = new Date().getFullYear();
-    return this.template(`${url_month}retombees/${year}/${month}/${dep}/2/${conotation}/${theme}`);
+    return this.template(`${url_month}retombees/${year}/${month}/${dep}/5/${conotation}/${theme}`);
   }
 
 }
