@@ -34,7 +34,7 @@ class RetombeeService {
       source: data.source,
       theme: data.theme,
       conotation: data.conotation,
-      pdf_path: data.pdf_path,
+      // pdf_path: data.pdf_path,
       hyperlink: data.hyperlink
     });
   }
