@@ -23,6 +23,11 @@ const retombees = require('./routes/api/retombees');
 const communiques = require('./routes/api/communiques');
 const files = require('./routes/api/files');
 const conotations = require('./routes/api/conotations');
+const dates = require('./routes/api/dates');
+const bilanDR = require('./routes/api/bilanDR');
+const bilanDep = require('./routes/api/bilanDep');
+const bilanMonth = require('./routes/api/bilanMonth');
+const utils = require('./routes/api/utils');
 
 app.use('/api/types', types);
 app.use('/api/departements', departements);
@@ -32,6 +37,11 @@ app.use('/api/retombees', retombees);
 app.use('/api/communiques', communiques);
 app.use('/api/files', files);
 app.use('/api/conotations', conotations);
+app.use('/api/dates', dates);
+app.use('/api/bilandr', bilanDR);
+app.use('/api/bilandep', bilanDep);
+app.use('/api/bilanmonth', bilanMonth);
+app.use('/api/utils', utils);
 
 
 // Handle production :
