@@ -103,18 +103,18 @@ export default {
     for (let i = 1; i <= array_names.length; i++) {
       data.name = array_names[i - 1];
 
-      (tmp = await StatService.getRetombeesConotation_byMonthAndDepartement(
+      tmp = await StatService.getRetombeesConotation_byMonthAndDepartement(
         this.month,
         i,
         1
-      )),
-        (data.conotations_pos = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesConotation_byMonthAndDepartement(
+      );
+      data.conotations_pos = tmp[0].cnt;
+      tmp = await StatService.getRetombeesConotation_byMonthAndDepartement(
         this.month,
         i,
         2
-      )),
-        (data.conotations_neg = tmp[0].cnt);
+      );
+      data.conotations_neg = tmp[0].cnt;
 
       array_conotation.push(data);
       data = {};
@@ -125,24 +125,24 @@ export default {
     for (let i = 1; i <= array_types.length; i++) {
       data.name = array_types[i - 1];
 
-      (tmp = await StatService.getRetombeesType_byMonthAndDepartement(
+      tmp = await StatService.getRetombeesType_byMonthAndDepartement(
         this.month,
         1,
         i
-      )),
-        (data.types_landes = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesType_byMonthAndDepartement(
+      );
+      data.types_landes = tmp[0].cnt;
+      tmp = await StatService.getRetombeesType_byMonthAndDepartement(
         this.month,
         2,
         i
-      )),
-        (data.types_pa = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesType_byMonthAndDepartement(
+      );
+      data.types_pa = tmp[0].cnt;
+      tmp = await StatService.getRetombeesType_byMonthAndDepartement(
         this.month,
         3,
         i
-      )),
-        (data.types_hp = tmp[0].cnt);
+      );
+      data.types_hp = tmp[0].cnt;
 
       array_supports.push(data);
       data = {};
@@ -153,8 +153,8 @@ export default {
     for (let i = 1; i <= array_names.length; i++) {
       data.name = array_names[i - 1];
 
-      (tmp = await StatService.getCP_byMonthAndDepartement(this.month, i)),
-        (data.cp_num = tmp[0].cnt);
+      tmp = await StatService.getCP_byMonthAndDepartement(this.month, i);
+      data.cp_num = tmp[0].cnt;
 
       array_cp.push(data);
       data = {};
@@ -165,11 +165,11 @@ export default {
     for (let i = 1; i <= array_names.length; i++) {
       data.name = array_names[i - 1];
 
-      (tmp = await StatService.getRetombeesCP_byMonthAndDepartement(
+      tmp = await StatService.getRetombeesCP_byMonthAndDepartement(
         this.month,
         i
-      )),
-        (data.retombeesCP = tmp[0].cnt);
+      );
+      data.retombeesCP = tmp[0].cnt;
 
       array_retombeesCP.push(data);
       data = {};
@@ -180,24 +180,24 @@ export default {
     for (let i = 1; i <= array_themes.length; i++) {
       data.name = array_themes[i - 1];
 
-      (tmp = await StatService.getRetombeesThemes_byMonthAndDepartement(
+      tmp = await StatService.getRetombeesThemes_byMonthAndDepartement(
         this.month,
         1,
         i
-      )),
-        (data.themes_landes = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesThemes_byMonthAndDepartement(
+      );
+      data.themes_landes = tmp[0].cnt;
+      tmp = await StatService.getRetombeesThemes_byMonthAndDepartement(
         this.month,
         2,
         i
-      )),
-        (data.themes_pa = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesThemes_byMonthAndDepartement(
+      );
+      data.themes_pa = tmp[0].cnt;
+      tmp = await StatService.getRetombeesThemes_byMonthAndDepartement(
         this.month,
         3,
         i
-      )),
-        (data.themes_hp = tmp[0].cnt);
+      );
+      data.themes_hp = tmp[0].cnt;
 
       array_themesRecurrents.push(data);
       data = {};
@@ -208,50 +208,50 @@ export default {
     for (let i = 1; i <= array_themes.length; i++) {
       data.name = array_themes[i - 1];
 
-      (tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
+      tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
         this.month,
         1,
         i,
         1
-      )),
-        (data.themes_landes_pos = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
+      );
+      data.themes_landes_pos = tmp[0].cnt;
+      tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
         this.month,
         1,
         i,
         2
-      )),
-        (data.themes_landes_neg = tmp[0].cnt);
+      );
+      data.themes_landes_neg = tmp[0].cnt;
 
-      (tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
+      tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
         this.month,
         2,
         i,
         1
-      )),
-        (data.themes_pa_pos = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
+      );
+      data.themes_pa_pos = tmp[0].cnt;
+      tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
         this.month,
         2,
         i,
         2
-      )),
-        (data.themes_pa_neg = tmp[0].cnt);
+      );
+      data.themes_pa_neg = tmp[0].cnt;
 
-      (tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
+      tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
         this.month,
         3,
         i,
         1
-      )),
-        (data.themes_hp_pos = tmp[0].cnt);
-      (tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
+      );
+      data.themes_hp_pos = tmp[0].cnt;
+      tmp = await StatService.getRetombeesThemesConotation_byMonthAndDepartement(
         this.month,
         3,
         i,
         2
-      )),
-        (data.themes_hp_neg = tmp[0].cnt);
+      );
+      data.themes_hp_neg = tmp[0].cnt;
 
       array_themesConotation.push(data);
       data = {};
