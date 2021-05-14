@@ -1,4 +1,5 @@
 import axios from 'axios';
+const FileDownload = require('js-file-download');
 
 const url = 'api/retombees/';
 
@@ -24,6 +25,13 @@ class RetombeeService {
     });
   }
 
+  static getFile(filename) {
+    const url_test = `api/files/retombee/${filename}`;
+    axios.get(url_test, { responseType: 'blob' }).then((response) => {
+      FileDownload(response.data, filename);
+    });
+  }
+
   static post(data) {
     return axios.post(url, {
       publi_date: data.publi_date,
@@ -34,7 +42,7 @@ class RetombeeService {
       source: data.source,
       theme: data.theme,
       conotation: data.conotation,
-      // pdf_path: data.pdf_path,
+      pdf_path: data.pdf_path,
       hyperlink: data.hyperlink
     });
   }

@@ -57,11 +57,12 @@
                 label="Thème"
                 outlined
               ></v-select>
-              <!-- pdf -->
+              <v-btn v-if="selected_pdf != null" color="primary" text @click="downloadFile()"> Télécharger PDF </v-btn>
               <v-text-field
                 label="Nouveau lien"
                 v-model="updated_link"
               ></v-text-field>
+              <v-btn v-if="updated_link != null" color="primary" text @click="openUrl()"> Ouvrir lien </v-btn>
             </v-card-text>
 
             <v-card-actions>
@@ -170,6 +171,7 @@ export default {
     selected_theme: "",
     selected_type: "",
     selected_date: "",
+    selected_pdf: "",
   }),
 
   methods: {
@@ -272,11 +274,22 @@ export default {
       this.updated_code = this.communiques_code[communiques_index];
       this.updated_link = this.communiques_link[communiques_index];
       this.selected_date = this.communiques_date[communiques_index];
+      this.selected_pdf = this.communiques_pdf[communiques_index];
     },
 
     updateDate(value) {
       this.selected_date = value;
     },
+
+    downloadFile() {
+      const filename = this.selected_pdf;
+      CommuniqueService.getFile(filename);
+    },
+
+    openUrl() {
+      const url = "http://" + this.updated_link;
+      window.open(url, "_blank");
+    }
   },
 
   async created() {
