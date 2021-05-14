@@ -75,12 +75,37 @@
                   color="error"
                 ></v-radio>
               </v-radio-group>
-              <v-btn v-if="selected_pdf != null" color="primary" text @click="downloadFile()"> Télécharger PDF </v-btn>
+              <v-file-input
+                show-size
+                truncate-length="40"
+                label="Document format pdf"
+                accept=".PDF, .pdf"
+                ref="file"
+                @change="handleFileUpload"
+              ></v-file-input>
+              <p v-if="selected_pdf != null" class="font-italic">
+                Fichier existant : {{ selected_pdf }}
+              </p>
+              <v-btn
+                v-if="selected_pdf != null"
+                color="primary"
+                text
+                @click="downloadFile()"
+              >
+                Télécharger PDF
+              </v-btn>
               <v-text-field
                 label="Nouveau lien"
                 v-model="updated_link"
               ></v-text-field>
-              <v-btn v-if="updated_link != null" color="primary" text @click="openUrl()"> Ouvrir lien </v-btn>
+              <v-btn
+                v-if="updated_link != null"
+                color="primary"
+                text
+                @click="openUrl()"
+              >
+                Ouvrir lien
+              </v-btn>
             </v-card-text>
 
             <v-card-actions>
@@ -202,6 +227,7 @@ export default {
     selected_theme: "",
     selected_conotation: "",
     selected_pdf: "",
+    file: "",
   }),
 
   methods: {
@@ -242,10 +268,14 @@ export default {
     async update() {
       let retombee_index = this.retombees_title.indexOf(this.selected_retombee);
       let type_index = this.types_name.indexOf(this.selected_type);
-      let departement_index = this.departements_num.indexOf(this.selected_departement);
+      let departement_index = this.departements_num.indexOf(
+        this.selected_departement
+      );
       let source_index = this.sources_name.indexOf(this.selected_source);
       let theme_index = this.themes_name.indexOf(this.selected_theme);
-      let conotation_index = this.conotations_name.indexOf(this.selected_conotation);
+      let conotation_index = this.conotations_name.indexOf(
+        this.selected_conotation
+      );
 
       let retombee_id = this.retombees_id[retombee_index];
       let type_id = this.types_id[type_index];
@@ -255,8 +285,12 @@ export default {
       let conotation_id = this.conotations_id[conotation_index];
       let date = this.selected_date.split("/").reverse().join("-");
 
-      // A CHANGER !!!
-      // let path = "path";
+      if (this.file) {
+        let formData = new FormData();
+        formData.append("pdf", this.file);
+        formData.append("source", "retombee"); // Name of the subfolder where the file will be uploaded
+        RetombeeService.postFile(formData);
+      }
 
       RetombeeService.update(
         retombee_id,
@@ -268,7 +302,7 @@ export default {
         source_id,
         theme_id,
         conotation_id,
-        // path,
+        this.selected_pdf,
         this.updated_link
       );
 
@@ -297,8 +331,10 @@ export default {
     },
 
     select_items() {
-      let retombees_index = this.retombees_title.indexOf(this.selected_retombee);
-      
+      let retombees_index = this.retombees_title.indexOf(
+        this.selected_retombee
+      );
+
       let type_index = this.retombees_type[retombees_index];
       let dep_index = this.retombees_dep[retombees_index];
       let source_index = this.retombees_source[retombees_index];
@@ -306,13 +342,13 @@ export default {
       let conotation_index = this.retombees_conotation[retombees_index];
 
       this.updated_name = this.selected_retombee;
-     
+
       this.selected_type = this.types_name[type_index - 1];
       this.selected_departement = this.departements_num[dep_index - 1];
       this.selected_source = this.sources_name[source_index - 1];
       this.selected_theme = this.themes_name[theme_index - 1];
       this.selected_conotation = this.conotations_name[conotation_index - 1];
-      
+
       this.updated_code = this.retombees_code[retombees_index];
       this.updated_link = this.retombees_link[retombees_index];
       this.selected_date = this.retombees_date[retombees_index];
@@ -331,7 +367,12 @@ export default {
     openUrl() {
       const url = "http://" + this.updated_link;
       window.open(url, "_blank");
-    }
+    },
+
+    handleFileUpload(event) {
+      this.file = event;
+      this.selected_pdf = event.name;
+    },
   },
 
   async created() {
