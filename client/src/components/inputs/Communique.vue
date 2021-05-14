@@ -7,7 +7,7 @@
       dark
       dismissible
     >
-      Communiqué ajouté avec succès
+      Communiqué ajouté avec succès.
     </v-alert>
 
     <v-form>
