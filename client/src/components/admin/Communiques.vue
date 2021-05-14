@@ -221,7 +221,7 @@ export default {
       let date = this.selected_date.split("/").reverse().join("-");
 
       // A CHANGER !!!
-      let path = "path";
+      // let path = "path";
 
       CommuniqueService.update(
         communique_id,
@@ -231,7 +231,7 @@ export default {
         type_id,
         departement_id,
         theme_id,
-        path,
+        // path,
         this.updated_link
       );
 

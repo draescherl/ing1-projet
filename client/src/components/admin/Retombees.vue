@@ -254,7 +254,7 @@ export default {
       let date = this.selected_date.split("/").reverse().join("-");
 
       // A CHANGER !!!
-      let path = "path";
+      // let path = "path";
 
       RetombeeService.update(
         retombee_id,
@@ -266,7 +266,7 @@ export default {
         source_id,
         theme_id,
         conotation_id,
-        path,
+        // path,
         this.updated_link
       );
 
