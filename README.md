@@ -62,10 +62,3 @@ npm start
 
 ## Problèmes connus
 Il est possible que node-sass lève une erreur lors de la compilation du côté client. Le cas échéant, exécuter la commande `npm rebuild node-sass` devrait suffire à corriger le problème.
-
-## Auteurs
-* **Yacine Akki** - akkiyacine@eisti.eu
-* **Tahirah Bhatti** - bhattitahi@eisti.eu
-* **Matthieu Cabrera** - cabreramat@eisti.eu
-* **Lucas Draescher** - draescherl@eisti.eu
-* **Paul Equinet** - equinetpau@eisti.eu
