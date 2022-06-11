@@ -35,7 +35,7 @@ export default {
     return {
       drawer: false,
       group: null,
-      title: "Médiascope [redacted]",
+      title: "Médiascope",
       items: [
         {
           icon: "mdi-plus-box",

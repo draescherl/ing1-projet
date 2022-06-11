@@ -8,9 +8,9 @@ DROP DATABASE IF EXISTS mediascope;
 CREATE DATABASE mediascope;
 USE mediascope;
 
-DROP USER IF EXISTS '[redacted]'@'localhost';
-CREATE USER '[redacted]'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mdp';
-GRANT ALL PRIVILEGES ON mediascope.* to '[redacted]'@'localhost';
+DROP USER IF EXISTS 'user'@'localhost';
+CREATE USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mdp';
+GRANT ALL PRIVILEGES ON mediascope.* to 'user'@'localhost';
 
 CREATE TABLE conotations (
   id TINYINT AUTO_INCREMENT,

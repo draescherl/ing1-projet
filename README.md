@@ -1,6 +1,6 @@
-# ING1 [redacted]
+# ING1 Projet
 
-Réalisation d'un site internet pour le service communication de la Direction Régionale [redacted] Pyrénées et Landes à l'aide de [Vue.js](https://vuejs.org/), [Express](https://expressjs.com/) et [MySQL](https://www.mysql.com).
+Réalisation d'un site internet pour une entreprise à l'aide de [Vue.js](https://vuejs.org/), [Express](https://expressjs.com/) et [MySQL](https://www.mysql.com).
 
 ## Suppositions
 Dans ce document, chaque fois qu'une commande `cd` est utilisée, il est supposé que l'utilisateur se trouve à la racine du projet.
